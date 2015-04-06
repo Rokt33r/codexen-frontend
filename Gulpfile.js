@@ -9,11 +9,11 @@ var concat = require('gulp-concat');
 var del = require('del');
 var runSequence = require('run-sequence');
 
+var livereload = require('gulp-livereload');
+
 var config = require('./build.conf');
 var build_path = config.build_path;
 var src_path = config.src_path;
-var url = config.url;
-var api_url = config.api_url;
 var vendor_path = config.vendor_path;
 
 gulp.task('js', function(){
@@ -50,7 +50,7 @@ gulp.task('index', function(){
         }).map(function(file){
             return file.replace('build/', '');
         });
-    }
+    };
     var scripts = filter(files, 'js');
 
     return gulp.src('src/index.html')

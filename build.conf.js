@@ -10,7 +10,7 @@ module.exports = {
     src_path:{
         js:['src/**/*.js', '!src/**/*.spec.js'],
         sass:['src/**/*.scss'],
-        tpls:['src/**/*.tpls']
+        tpls:['src/**/*.tpl.html']
     },
 
     // vendor path
