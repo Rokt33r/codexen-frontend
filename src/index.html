@@ -9,6 +9,7 @@
 </head>
 <body>
 
+<top-nav></top-nav>
 <div ui-view></div>
 
 <script src="vendor/codemirror.js"></script>
@@ -18,7 +19,18 @@
 <script src="vendor/angular-jwt.js" charset="utf-8"></script>
 <script src="vendor/ui-codemirror.js"></script>
 <script charset="utf-8">
-    angular.module('codexen', ['templates', 'angular-jwt', 'ui.bootstrap', 'ui.codemirror']);
+    angular.module('codexen', ['templates', 'angular-jwt', 'ui.bootstrap', 'ui.codemirror', 'ui.router', 'codexen.core', 'codexen.states']);
+
+    angular.module('codexen.core', [
+        'codexen.core.config'
+    ]);
+    angular.module('codexen.core.config', ['ui.router']);
+
+    angular.module('codexen.states', [
+        'codexen.states.home'
+    ]);
+    angular.module('codexen.states.home', ['ui.router']);
+
 
     angular.module('templates', []);
 
