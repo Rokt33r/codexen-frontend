@@ -14,13 +14,16 @@ module.exports = {
     },
 
     // vendor path
-    vendor:{
-        codemirror:['bower_components/codemirror/lib/codemirror.js','bower_components/codemirror/lib/codemirror.css'],
-        ng:'bower_components/angular/angular.js',
-        ngBootstrap:'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
-        ngCodemirror:'bower_components/angular-ui-codemirror/ui-codemirror.js',
-        ngUiRouter:'bower_components/angular-ui-router/release/angular-ui-router.js',
-        fa:['bower_components/fontawesome/fonts/*', 'bower_components/fontawesome/css/font-awesome.css']
-    }
+    vendor_path:[
+        'bower_components/codemirror/lib/codemirror.js',
+        'bower_components/codemirror/lib/codemirror.css',
+        'bower_components/angular/angular.js',
+        'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+        'bower_components/angular-ui-codemirror/ui-codemirror.js',
+        'bower_components/angular-ui-router/release/angular-ui-router.js',
+        'bower_components/fontawesome/**/fonts/*',
+        'bower_components/fontawesome/**/css/font-awesome.css',
+        'bower_components/angular-jwt/dist/angular-jwt.js'
+    ]
 
 }
