@@ -1,75 +1,138 @@
-<div class="welcome">
-    <section class="first-section">
+<div class="home-page">
+
+    <section class="catch">
+        <h1>Welcome To Codexen</h1>
+    </section>
+
+    <section class="features">
         <div class="container">
-            <div class="row ">
-                <div class="col-sm-6 catch">
-                    <h1>Welcome to CodeXen</h1>
-                    <p>Short-code storage service with CLI</p>
-                </div>
-                <div class="col-sm-6 signin">
-                    <form>
-
-                        <div class="form-group">
-                            <label for="email">E-mail</label>
-                            <input class="form-control" name="email" type="text" value="" id="email">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input class="form-control" name="password" type="password" value="" id="password">
-                        </div>
-
-                        <div class="form-group">
-                            <input class="btn btn-primary" type="submit" value="Sign In">
-                            <a class="btn btn-default" href="http://codexen.org/register">Sign Up</a>
-                        </div>
-
-                    </form>
-                </div>
-            </div>
+            <h2>Features</h2>
+            <ul class="feature-list row">
+                <li class="col-sm-4">
+                    <span class="icon"><i class="fa fa-share-alt fa-fw"></i></span>
+                    <h3>Twitter + Github</h3>
+                    <p>You can find codes by tag, follow other users, and make a team. Also, you can fork every codes with <strong>*A single Click*</strong>.</p>
+                </li>
+                <li class="col-sm-4">
+                    <span class="icon"><i class="fa fa-terminal fa-fw"></i></span>
+                    <h3>Terminal Friendly</h3>
+                    <p>CodeXen offer you CLI Tool to fetch your codes. You can generate or run directly it with your <strong>*Fully Customized Command*</strong>.</p>
+                </li>
+                <li class="col-sm-4">
+                    <span class="icon"><i class="fa fa-mobile fa-fw"></i></span>
+                    <h3>Mobile First</h3>
+                    <p>This App is available to use on every device. In CodeXen, you can browse codes and set up your commands with your <strong>*Smart phone*</strong>. :)</p>
+                </li>
+            </ul>
         </div>
     </section>
 
-    <section class="second-section">
+    <section class="how-to">
+        <h2>How to Use</h2>
+
+        <div class="video-box">
+            <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/2x1BZNJoKiM" frameborder="0" allowfullscreen></iframe>-->
+        </div>
+    </section>
+
+    <section class="tutorial">
         <div class="container">
-            <div class="row">
-                <div class="col-sm-6 col-sm-offset-3 request-key" id="request-key">
 
-                    <h2>Request an activation key</h2>
-                    <p>CodeXen is on <strong>closed release</strong> now. You need an activation to sign up.</p>
+            <h2>Tutorial</h2>
 
-                    <form method="POST" action="http://codexen.org/request" accept-charset="UTF-8">
+            <ul class="steps row">
+                <li class="col-sm-8 col-sm-offset-2">
+                    <h3>Install</h3>
+                    <p>
+                        You can install via npm(Node package manager).
+                    </p>
+                    <pre><code>npm install -g codexen</code></pre>
+                </li>
+                <li class="col-sm-8 col-sm-offset-2">
+                    <h3>Set Up</h3>
 
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input class="form-control" name="email" type="text" value="" id="email">
-                        </div>
+                    <p>
+                        First of all, you should fetch your Depot(command set) from server.
+                    </p>
 
-                        <div class="form-group">
-                            <button class="btn btn-primary form-control">Request</button>
-                        </div>
-
-                    </form>
+                    <pre><code>cxcx init {depot_name}</code></pre>
 
                     <blockquote>
-                        Activation key will be sent in 1~10 days.
+                        <small>Default depot name is your username : <strong>laravelfanatic</strong></small>
+                        <small>The depot data will be fetched to <code>codexen.json</code></small>
                     </blockquote>
-                </div>
-            </div>
+                </li>
+                <li class="col-sm-8 col-sm-offset-2">
+                    <h3>Use</h3>
+
+                    <p>
+                        You are ready to go. You can use all Commands you registered.<br>
+
+                    </p>
+                    <pre><code>cx {command}</code></pre>
+                    <blockquote><small>You can register commands <a href="http://codexen.org/depots/mydepot" target="_blank">here</a></small></blockquote>
+
+                    <p>If you use generator, you can override filename with the second parameter</p>
+                    <pre><code>cx {command} {override_filename}</code></pre>
+                    <blockquote>
+                        <h4>Given : </h4>
+                        <p>There is a command, 'idx', to generate 'index.js'</p>
+
+                        <h5>Without the second parameter</h5>
+                        <pre><code>cx idx</code></pre>
+                        <p><small>index.js generated.</small></p>
+
+                        <h5>With the second parameter</h5>
+                        <pre><code>cx idx yolo</code></pre>
+                        <p><small>yolo.js generated.</small></p>
+
+                    </blockquote>
+                </li>
+                <li class="col-sm-8 col-sm-offset-2">
+                    <h3>Update commands</h3>
+
+                    <p>
+                        If some changes occur, you can re-fetch the changed commands easily.
+                    </p>
+
+                    <pre><code>cxcx update</code></pre>
+                </li>
+            </ul>
         </div>
     </section>
 
+    <section class="about-us">
+        <h2>About Us</h2>
+        <h3>
+            <a href="http://maisin.co/">MAISIN&CO.</a><br>
+            <small><a href="mailto:info@maisin.co">info@maisin.co</a></small>
+        </h3>
+        <ul class="creators row">
+            <li class="col-sm-4 col-sm-offset-2">
+                <img src="//www.gravatar.com/avatar/4803f11f0ea5f5e6b033cc725ef885b0?s=100" class="img-circle" alt="Yokomizo Kazu"/>
+                <h4>Yokomizo Kazu</h4>
+                <ul class="social-links clearfix">
+                    <li><a href="https://www.facebook.com/kazumasa123" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="https://twitter.com/kazup_inc" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="https://github.com/kazup01" target="_blank"><i class="fa fa-github"></i></a></li>
+                </ul>
+            </li>
+            <li class="col-sm-4">
+                <img src="//www.gravatar.com/avatar/ea0b6ad1c11700120d1af08810caa19d?s=100" class="img-circle" alt="Dick Choi"/>
+                <h4>Dick Choi</h4>
+                <ul class="social-links clearfix">
+                    <li><a href="https://www.facebook.com/IntegralN" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="https://twitter.com/kazup_inc" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="https://github.com/laravelfanatic" target="_blank"><i class="fa fa-github"></i></a></li>
+                </ul>
 
-    <section class="third-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6 col-sm-offset-3 about-us">
-                    <h2>Contact Us</h2>
-                    <h3>
-                        <a href="http://maisin.co/">MAISIN&amp;CO.,Inc</a>
-                    </h3><a href="mailto:info@maisin.co">&gt;&gt; info@maisin.co</a>
-                </div>
-            </div>
-        </div>
+            </li>
+        </ul>
     </section>
+
+    <section class="supporters">
+        <h2>Supporter</h2>
+        <h3><a href="http://www.vilingvp.com/">Viling Venture Partners</a></h3>
+    </section>
+
 </div>

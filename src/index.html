@@ -19,19 +19,43 @@
 <script src="vendor/angular-jwt.js" charset="utf-8"></script>
 <script src="vendor/ui-codemirror.js"></script>
 <script charset="utf-8">
-    angular.module('codexen', ['templates', 'angular-jwt', 'ui.bootstrap', 'ui.codemirror', 'ui.router', 'codexen.core', 'codexen.states']);
 
+    // App
+    angular.module('codexen', ['templates', 'angular-jwt', 'ui.bootstrap', 'ui.codemirror', 'ui.router', 'codexen.core', 'codexen.states', 'codexen.directives']);
+
+    // Core Modules
     angular.module('codexen.core', [
-        'codexen.core.config'
+        'codexen.core.init',
+        'codexen.core.config',
+        'codexen.core.auth'
     ]);
+    angular.module('codexen.core.init', ['ui.router', 'codexen.core.auth']);
     angular.module('codexen.core.config', ['ui.router']);
+    angular.module('codexen.core.auth', ['ui.router', 'codexen.core.config']);
 
+    // States
     angular.module('codexen.states', [
-        'codexen.states.home'
+        'codexen.states.home',
+        'codexen.states.welcome',
+        'codexen.states.signin',
+        'codexen.states.notfound'
     ]);
     angular.module('codexen.states.home', ['ui.router']);
+    angular.module('codexen.states.welcome', ['ui.router']);
+    angular.module('codexen.states.signin', ['ui.router', 'codexen.core.auth']);
 
+    // Error states
+    angular.module('codexen.states.notfound', ['ui.router']);
 
+    // Directives
+    angular.module('codexen.directives', [
+        'codexen.directives.top-nav'
+    ]);
+    angular.module('codexen.directives.top-nav', ['codexen.core.auth']);
+
+    // Services
+
+    // Etc
     angular.module('templates', []);
 
 </script>
