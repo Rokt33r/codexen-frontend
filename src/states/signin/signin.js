@@ -27,5 +27,5 @@ angular.module('codexen.states.signin')
             }, function(data){
                 vm.error = data.error;
             });
-        }
+        };
     });

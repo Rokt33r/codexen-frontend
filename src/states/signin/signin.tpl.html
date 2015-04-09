@@ -2,23 +2,7 @@
     <div class="row">
         <div class="col-sm-6 col-sm-offset-3">
             <h1>Sign In</h1>
-            <div ng-show="vm.error" class="alert alert-danger">
-                <strong>Oops...</strong>
-                <span ng-bind="vm.error"></span>
-            </div>
-            <form ng-submit="vm.signin()">
-                <div class="form-group">
-                    <label for="email">E-mail</label>
-                    <input ng-model="vm.email" type="email" id="email" name="email" class="form-control"/>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input ng-model="vm.password" type="password" id="password" name="password" class="form-control"/>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary form-control">Sign In</button>
-                </div>
-            </form>
+            <signin-form></signin-form>
         </div>
     </div>
 </div>
