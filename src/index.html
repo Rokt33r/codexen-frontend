@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Codexen!</title>
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="vendor/codemirror.css"/>
     <link rel="stylesheet" href="vendor/css/font-awesome.css">
     <link rel="stylesheet" href="all.css" media="screen" title="no title" charset="utf-8">
@@ -49,9 +50,11 @@
 
     // Directives
     angular.module('codexen.directives', [
-        'codexen.directives.top-nav'
+        'codexen.directives.top-nav',
+        'codexen.directives.signin-form'
     ]);
     angular.module('codexen.directives.top-nav', ['codexen.core.auth']);
+    angular.module('codexen.directives.signin-form', ['codexen.core.auth', 'ui.router']);
 
     // Services
 

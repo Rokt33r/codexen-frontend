@@ -1,7 +1,7 @@
 angular.module('codexen.states.home')
     .config(function($stateProvider){
         $stateProvider.state('home', {
-            url:'/',
+            url:'/home',
             templateUrl:'states/home/home.tpl.html',
             controller:'HomeController',
             controllerAs:'vm',

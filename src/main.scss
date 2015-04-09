@@ -1,1 +1,23 @@
 @import "bootstrap";
+
+body, label{
+    font-family: 'Lato', sans-serif;
+    font-weight:400;
+}
+
+nav.top-nav{
+    margin: 0;
+}
+
+h1, h2{
+    font-weight: 300;
+}
+
+blockquote{
+    font-size: 17.5px;
+    font-weight: 300;
+}
+
+p.copyright{
+    text-align: center;
+}

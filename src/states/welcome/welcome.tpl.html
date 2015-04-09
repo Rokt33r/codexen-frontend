@@ -2,29 +2,12 @@
     <section class="first-section">
         <div class="container">
             <div class="row ">
-                <div class="col-sm-6 catch">
+                <div class="col-sm-6 col-md-5 col-md-offset-1 col-lg-4 col-lg-offset-2 catch">
                     <h1>Welcome to CodeXen</h1>
                     <p>Short-code storage service with CLI</p>
                 </div>
-                <div class="col-sm-6 signin">
-                    <form>
-
-                        <div class="form-group">
-                            <label for="email">E-mail</label>
-                            <input class="form-control" name="email" type="text" value="" id="email">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input class="form-control" name="password" type="password" value="" id="password">
-                        </div>
-
-                        <div class="form-group">
-                            <input class="btn btn-primary" type="submit" value="Sign In">
-                            <a class="btn btn-default" href="http://codexen.org/register">Sign Up</a>
-                        </div>
-
-                    </form>
+                <div class="col-sm-6 col-md-5 col-lg-4 signin">
+                    <signin-form></signin-form>
                 </div>
             </div>
         </div>
@@ -72,4 +55,8 @@
             </div>
         </div>
     </section>
+
+    <footer>
+        <p class="copyright">© 2015 MAISIN&CO.,Inc.</p>
+    </footer>
 </div>
