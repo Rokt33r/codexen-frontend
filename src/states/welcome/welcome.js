@@ -11,4 +11,5 @@ angular.module('codexen.states.welcome')
         });
     })
     .controller('WelcomeController', function(){
+
     });
