@@ -22,7 +22,7 @@
 <script charset="utf-8">
 
     // App
-    angular.module('codexen', ['templates', 'angular-jwt', 'ui.bootstrap', 'ui.codemirror', 'ui.router', 'codexen.core', 'codexen.states', 'codexen.directives']);
+    angular.module('codexen', ['templates', 'angular-jwt', 'ui.bootstrap', 'ui.codemirror', 'ui.router', 'codexen.core', 'codexen.states', 'codexen.directives', 'codexen.services']);
 
     // Core Modules
     angular.module('codexen.core', [
@@ -39,11 +39,13 @@
         'codexen.states.home',
         'codexen.states.welcome',
         'codexen.states.signin',
-        'codexen.states.notfound'
+        'codexen.states.notfound',
+        'codexen.states.users'
     ]);
     angular.module('codexen.states.home', ['ui.router']);
     angular.module('codexen.states.welcome', ['ui.router']);
     angular.module('codexen.states.signin', ['ui.router', 'codexen.core.auth']);
+    angular.module('codexen.states.users', ['ui.router', 'codexen.services.users']);
 
     // Error states
     angular.module('codexen.states.notfound', ['ui.router']);
@@ -57,6 +59,10 @@
     angular.module('codexen.directives.signin-form', ['codexen.core.auth', 'ui.router']);
 
     // Services
+    angular.module('codexen.services', [
+        'codexen.services.users'
+    ]);
+    angular.module('codexen.services.users', ['codexen.core.config', 'codexen.core.auth']);
 
     // Etc
     angular.module('templates', []);

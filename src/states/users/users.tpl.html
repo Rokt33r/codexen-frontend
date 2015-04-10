@@ -1,0 +1,20 @@
+<div class="users-state">
+
+    <h1>Our users <span></span></h1>
+
+    <ul class="row user-list">
+
+        <li ng-repeat="user in vm.users.data" class="col-sm-3 col-xs-6">
+            <a ui-sref="users.show({user:user.name})">
+                <img ng-src="//www.gravatar.com/avatar/{{user.md5}}?s=100" alt="profile photo" class="img-circle"/>
+                <h4 ng-bind="user.name"></h4>
+            </a>
+        </li>
+
+    </ul>
+
+    <pagination
+        total-items="vm.users.total" items-per-page="vm.users.per_page" ng-model="vm.currentPage" ng-change="vm.changePage()">
+    </pagination>
+
+</div>

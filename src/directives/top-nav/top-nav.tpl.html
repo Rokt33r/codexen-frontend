@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default top-nav">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" ui-sref="welcome">
                 CodeXen <small>αlpha</small>
             </a>
             <button ng-click="vm.isCollapsed = !vm.isCollapsed" ng-init="isNavBarCollapsed=true" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -14,7 +14,7 @@
 
         <div class="collapse navbar-collapse" collapse="vm.isCollapsed">
 
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav" ng-show="vm.currentUser">
                 <li ui-sref-active="active">
                     <a ui-sref="home"><i class="fa fa-home"></i> Home</a>
                 </li>
@@ -34,12 +34,16 @@
 
             <ul class="nav navbar-nav navbar-right" ng-show="vm.currentUser">
 
-                <a class="top-nav-btn btn btn-primary"><i class="fa fa-plus-square-o"></i> New Code</a>
-                <li ui-sref-active="active">
-                    <a><img class="profile-photo img-circle" src="//www.gravatar.com/avatar/ea0b6ad1c11700120d1af08810caa19d?s=35"><span class="visible-xs-inline"> laravelfanatic</span></a>
-                </li>
-                <li>
-                    <a ng-click="vm.signOut()"><i class="fa fa-sign-out"></i> Sign Out</a>
+                <a ui-sref="cards.create" class="top-nav-btn btn btn-primary"><i class="fa fa-plus-square-o"></i> New Code</a>
+                <li class="dropdown" dropdown >
+
+                    <a class="dropdown-toggle profile-photo" dropdown-toggle><img class="img-circle" ng-src="//www.gravatar.com/avatar/{{vm.currentUser.md5}}?s=35"><span class="visible-xs-inline"> {{vm.currentUser.name}}</span></a>
+
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a ui-sref="users.show({user:vm.currentUser.name})">My page</a></li>
+                        <li class="divider"></li>
+                        <li><a ng-click="vm.signOut()"><i class="fa fa-sign-out"></i> Sign Out</a></li>
+                    </ul>
                 </li>
 
             </ul>
