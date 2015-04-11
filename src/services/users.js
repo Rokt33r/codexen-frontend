@@ -1,10 +1,13 @@
 angular.module('codexen.services.users')
     .factory('User', function($http, Config){
 
-        var url = Config.rootUrl + 'users';
 
         var index = function (page){
+            var url = Config.rootUrl + 'users';
+            console.log('request to ', url);
+
             if(!page) page = 1;
+
             return $http.get(url, {
                 params:{
                     page:page
@@ -12,8 +15,17 @@ angular.module('codexen.services.users')
             });
         };
 
+        var show = function (user_name){
+
+            var url = Config.rootUrl + 'users/' + user_name;
+
+            return $http.get(url);
+
+        };
+
         return {
-            index:index
+            index:index,
+            show:show
         }
 
     });

@@ -40,12 +40,16 @@
         'codexen.states.welcome',
         'codexen.states.signin',
         'codexen.states.notfound',
-        'codexen.states.users'
+        'codexen.states.users',
+        'codexen.states.users.index',
+        'codexen.states.users.show'
     ]);
     angular.module('codexen.states.home', ['ui.router']);
     angular.module('codexen.states.welcome', ['ui.router']);
     angular.module('codexen.states.signin', ['ui.router', 'codexen.core.auth']);
     angular.module('codexen.states.users', ['ui.router', 'codexen.services.users']);
+    angular.module('codexen.states.users.index', ['ui.router', 'codexen.services.users']);
+    angular.module('codexen.states.users.show', ['ui.router', 'codexen.services.users']);
 
     // Error states
     angular.module('codexen.states.notfound', ['ui.router']);

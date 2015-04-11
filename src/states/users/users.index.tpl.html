@@ -5,7 +5,7 @@
     <ul class="row user-list">
 
         <li ng-repeat="user in vm.users.data" class="col-sm-3 col-xs-6">
-            <a ui-sref="users.show({user:user.name})">
+            <a ui-sref="users.show({user_name:user.name})">
                 <img ng-src="//www.gravatar.com/avatar/{{user.md5}}?s=100" alt="profile photo" class="img-circle"/>
                 <h4 ng-bind="user.name"></h4>
             </a>
