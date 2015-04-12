@@ -1,0 +1,16 @@
+<p ng-bind="card.label"></p>
+<h4 ng-bind="card.filename"></h4>
+<ul><li><span ng-repeat="tag in card.tags" ng-bind="tag.name" class="label label-default"></span></li></ul>
+<p ng-bind="card.memo"></p>
+<div class="panel panel-default">
+    <ui-codemirror ng-model="card.code" ui-codemirror-opts="{
+                            lineWrapping : true,
+                            lineNumbers: true,
+                            readOnly: 'nocursor'
+                        }"></ui-codemirror>
+</div>
+<div>
+    <button class="btn btn-strip"><i class="fa fa-code-fork"></i> Fork</button>
+    <button class="btn btn-strip"><i class="fa fa-edit"></i> Edit</button>
+    <button class="btn btn-strip"><i class="fa fa-trash"></i> Delete</button>
+</div>

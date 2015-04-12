@@ -57,10 +57,12 @@
     // Directives
     angular.module('codexen.directives', [
         'codexen.directives.top-nav',
-        'codexen.directives.signin-form'
+        'codexen.directives.signin-form',
+        'codexen.directives.card-viewer'
     ]);
     angular.module('codexen.directives.top-nav', ['codexen.core.auth']);
     angular.module('codexen.directives.signin-form', ['codexen.core.auth', 'ui.router']);
+    angular.module('codexen.directives.card-viewer', []);
 
     // Services
     angular.module('codexen.services', [

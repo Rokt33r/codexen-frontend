@@ -1,5 +1,5 @@
 <nav class="navbar navbar-default top-nav">
-    <div class="container">
+    <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" ui-sref="welcome">
                 CodeXen <small>αlpha</small>
@@ -34,13 +34,13 @@
 
             <ul class="nav navbar-nav navbar-right" ng-show="vm.currentUser">
 
-                <a ui-sref="cards.create" class="top-nav-btn btn btn-primary"><i class="fa fa-plus-square-o"></i> New Code</a>
+                <li><a ui-sref="cards.create" class="top-nav-btn btn btn-primary"><i class="fa fa-plus-square-o"></i> New Code</a></li>
                 <li class="dropdown" dropdown >
 
                     <a class="dropdown-toggle profile-photo" dropdown-toggle><img class="img-circle" ng-src="//www.gravatar.com/avatar/{{vm.currentUser.md5}}?s=35"><span class="visible-xs-inline"> {{vm.currentUser.name}}</span></a>
 
                     <ul class="dropdown-menu" role="menu">
-                        <li><a ui-sref="users.show({user:vm.currentUser.name})">My page</a></li>
+                        <li><a ui-sref="users.show({user_name:vm.currentUser.name})">My page</a></li>
                         <li class="divider"></li>
                         <li><a ng-click="vm.signOut()"><i class="fa fa-sign-out"></i> Sign Out</a></li>
                     </ul>

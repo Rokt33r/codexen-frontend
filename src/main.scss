@@ -21,3 +21,15 @@ blockquote{
 p.copyright{
     text-align: center;
 }
+
+.panel-default{
+    overflow: hidden;
+}
+
+.btn-strip{
+    background:none;
+    color: #337AB7;
+    &:hover{
+        color: #285f8f;
+    }
+}

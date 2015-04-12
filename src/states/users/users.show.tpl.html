@@ -1,16 +1,23 @@
 <div class="users-show-state">
     <div class="row">
-        <div class="col-sm-4">
-            <img ng-src="//www.gravatar.com/avatar/{{vm.user.md5}}?s=100" alt="profile photo" class="img-circle"/>
-            <h2 ng-bind="vm.user.name"></h2>
+        <div class="col-sm-4 col-md-3">
+            <div class="user-info">
+                <img ng-src="//www.gravatar.com/avatar/{{vm.user.md5}}?s=100" alt="profile photo" class="img-circle"/>
+                <h2 ng-bind="vm.user.name"></h2>
+            </div>
         </div>
-        <div class="col-sm-8">
+        <div class="col-sm-8 col-md-6">
+
             <ul>
-                <li ng-repeat="card in vm.cards">
-                    <h4 ng-bind="card.filename"></h4>
-                    <pre><code ng-bind="card.code"></code></pre>
+                <li ng-repeat="card in vm.cards.data">
+                    <card-viewer card="card"></card-viewer>
                 </li>
             </ul>
+
+            <pagination
+                    total-items="vm.cards.total" items-per-page="vm.cards.per_page" ng-model="vm.currentPage" ng-change="vm.changePage()">
+            </pagination>
+
         </div>
     </div>
 </div>

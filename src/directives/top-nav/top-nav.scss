@@ -1,6 +1,16 @@
 .top-nav{
     .profile-photo{
         padding: 7px 11px !important;
-        margin-right:5px;
+    }
+    a.top-nav-btn.btn-primary{
+        padding: 6px 12px;
+        color: white;
+        margin-top: 7px;
+        width: 100%;
+        &:hover{
+            background-color: #286090;
+            border-color: #204d74;
+            color: white;
+        }
     }
 }
