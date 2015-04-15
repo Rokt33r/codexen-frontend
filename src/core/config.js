@@ -1,5 +1,5 @@
 angular.module('codexen.core.config')
-    .config(function($urlRouterProvider, jwtInterceptorProvider, $httpProvider){
+    .config(function($urlRouterProvider, jwtInterceptorProvider, $httpProvider, uiSelectConfig){
 
         $urlRouterProvider
             .when('', '/')
@@ -12,6 +12,10 @@ angular.module('codexen.core.config')
         }];
 
         $httpProvider.interceptors.push('jwtInterceptor');
+
+        uiSelectConfig.theme = 'bootstrap';
+        uiSelectConfig.resetSearchInput = true;
+        uiSelectConfig.appendToBody = true;
     })
     .factory('Config', function(){
         var rootUrl = 'http://localhost:8000/v0/';

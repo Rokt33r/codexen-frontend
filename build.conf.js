@@ -23,7 +23,11 @@ module.exports = {
         'bower_components/angular-ui-router/release/angular-ui-router.js',
         'bower_components/fontawesome/**/fonts/*',
         'bower_components/fontawesome/**/css/font-awesome.css',
-        'bower_components/angular-jwt/dist/angular-jwt.js'
+        'bower_components/angular-jwt/dist/angular-jwt.js',
+        'bower_components/angular-sanitize/angular-sanitize.js',
+        'bower_components/angular-ui-select/dist/select.js',
+        'bower_components/angular-ui-select/dist/select.css',
+        'bower_components/lodash/lodash.js'
     ]
 
-}
+};

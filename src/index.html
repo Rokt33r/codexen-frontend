@@ -6,23 +6,26 @@
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="vendor/codemirror.css"/>
     <link rel="stylesheet" href="vendor/css/font-awesome.css">
+    <link rel="stylesheet" href="vendor/select.css">
     <link rel="stylesheet" href="all.css" media="screen" title="no title" charset="utf-8">
 </head>
 <body>
 
 <top-nav></top-nav>
 <div ui-view></div>
-
+<script src="vendor/lodash.js"></script>
 <script src="vendor/codemirror.js"></script>
 <script src="vendor/angular.js"></script>
 <script src="vendor/angular-ui-router.js" charset="utf-8"></script>
 <script src="vendor/ui-bootstrap-tpls.js" charset="utf-8"></script>
 <script src="vendor/angular-jwt.js" charset="utf-8"></script>
 <script src="vendor/ui-codemirror.js"></script>
+<script src="vendor/angular-sanitize.js"></script>
+<script src="vendor/select.js"></script>
 <script charset="utf-8">
 
     // App
-    angular.module('codexen', ['templates', 'angular-jwt', 'ui.bootstrap', 'ui.codemirror', 'ui.router', 'codexen.core', 'codexen.states', 'codexen.directives', 'codexen.services']);
+    angular.module('codexen', ['templates', 'angular-jwt', 'ui.bootstrap', 'ui.codemirror', 'ngSanitize', 'ui.select', 'ui.router', 'codexen.core', 'codexen.states', 'codexen.directives', 'codexen.services']);
 
     // Core Modules
     angular.module('codexen.core', [
@@ -42,14 +45,18 @@
         'codexen.states.notfound',
         'codexen.states.users',
         'codexen.states.users.index',
-        'codexen.states.users.show'
+        'codexen.states.users.show',
+        'codexen.states.cards',
+        'codexen.states.cards.create'
     ]);
     angular.module('codexen.states.home', ['ui.router']);
     angular.module('codexen.states.welcome', ['ui.router']);
     angular.module('codexen.states.signin', ['ui.router', 'codexen.core.auth']);
-    angular.module('codexen.states.users', ['ui.router', 'codexen.services.users']);
+    angular.module('codexen.states.users', ['ui.router']);
     angular.module('codexen.states.users.index', ['ui.router', 'codexen.services.users']);
     angular.module('codexen.states.users.show', ['ui.router', 'codexen.services.users']);
+    angular.module('codexen.states.cards', ['ui.router']);
+    angular.module('codexen.states.cards.create', ['ui.router', 'codexen.services.cards', 'codexen.services.tags']);
 
     // Error states
     angular.module('codexen.states.notfound', ['ui.router']);
@@ -66,9 +73,13 @@
 
     // Services
     angular.module('codexen.services', [
-        'codexen.services.users'
+        'codexen.services.users',
+        'codexen.services.cards',
+        'codexen.services.tags'
     ]);
     angular.module('codexen.services.users', ['codexen.core.config', 'codexen.core.auth']);
+    angular.module('codexen.services.cards', ['codexen.core.config']);
+    angular.module('codexen.services.tags', ['codexen.core.config']);
 
     // Etc
     angular.module('templates', []);
