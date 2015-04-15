@@ -28,8 +28,7 @@ angular.module('codexen.states.cards.create')
 
             return Card.store(params)
                 .success(function(data){
-                    console.log(data.card.id);
-                    $state.go('cards.show', {id:data.card.id});
+                    $state.go('cards.show', {card_id:data.card.id});
                 }).error(function(data, status){
                     console.log('Error! : ', status);
                     console.log(data);

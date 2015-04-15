@@ -1,0 +1,50 @@
+<div class="cards-show">
+    <div class="col-sm-4 col-md-3">
+        <div class="owner">
+            <div class="form-group">
+                <label for="">Author</label>
+                <h2>
+                    <img ng-src="//www.gravatar.com/avatar/{{vm.card.owner.md5}}?s=50" alt="owner_photo" class="img-circle"/>
+                    <span ng-bind="vm.card.owner.name"></span>
+                </h2>
+
+            </div>
+            <div class="form-group">
+                <label for="">label</label>
+                <p ng-bind="vm.card.label"></p>
+            </div>
+            <div class="form-group">
+                <label for="">filename</label>
+                <p ng-bind="vm.card.filename"></p>
+            </div>
+            <div class="form-group">
+                <label for="">tags</label>
+                <ul>
+                    <li ng-repeat="tag in vm.card.tags">
+                        <span ng-bind="tag.name"></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="form-group">
+                <label for="">memo</label>
+                <p ng-bind="vm.card.memo"></p>
+            </div>
+            <div class="form-group row">
+                <button class="btn btn-default form-control"><i class="fa fa-code-fork"></i> Fork</button>
+                <button class="btn btn-default form-control"><i class="fa fa-location-arrow"></i> Mobilize</button>
+                <button class="btn btn-default form-control"><i class="fa fa-edit"></i> Edit</button>
+                <button class="btn btn-danger form-control"><i class="fa fa-trash"></i> Delete</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8 col-md-9">
+        <label for="">Code</label>
+        <div class="panel panel-default">
+            <ui-codemirror ng-model="vm.card.code" ui-codemirror-opts="{
+                            lineWrapping : true,
+                            lineNumbers: true,
+                            readOnly: 'nocursor'
+                        }"></ui-codemirror>
+        </div>
+    </div>
+</div>
