@@ -13,8 +13,15 @@ angular.module('codexen.services.cards')
             return $http.get(url);
         };
 
+        var update = function(cardId, params){
+            var url = Config.rootUrl + 'cards/' + cardId;
+
+            return $http.put(url, params);
+        };
+
         return {
             store:store,
-            show:show
+            show:show,
+            update:update
         }
     });

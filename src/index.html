@@ -48,7 +48,8 @@
         'codexen.states.users.show',
         'codexen.states.cards',
         'codexen.states.cards.create',
-        'codexen.states.cards.show'
+        'codexen.states.cards.show',
+        'codexen.states.cards.edit'
     ]);
     angular.module('codexen.states.home', ['ui.router']);
     angular.module('codexen.states.welcome', ['ui.router']);
@@ -59,6 +60,7 @@
     angular.module('codexen.states.cards', ['ui.router']);
     angular.module('codexen.states.cards.create', ['ui.router', 'codexen.services.cards', 'codexen.services.tags']);
     angular.module('codexen.states.cards.show', ['ui.router', 'codexen.services.cards', 'codexen.services.tags']);
+    angular.module('codexen.states.cards.edit', ['ui.router', 'codexen.services.cards', 'codexen.services.tags']);
 
     // Error states
     angular.module('codexen.states.notfound', ['ui.router']);
