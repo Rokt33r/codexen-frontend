@@ -19,9 +19,23 @@ angular.module('codexen.services.cards')
             return $http.put(url, params);
         };
 
+        var destroy = function(cardId){
+            var url = Config.rootUrl + 'cards/' + cardId;
+
+            return $http.delete(url);
+        };
+
+        var fork = function(cardId){
+            var url = Config.rootUrl + 'cards/' + cardId + '/fork';
+
+            return $http.post(url);
+        };
+
         return {
             store:store,
             show:show,
-            update:update
-        }
+            update:update,
+            destroy:destroy,
+            fork:fork
+        };
     });

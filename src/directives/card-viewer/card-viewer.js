@@ -7,6 +7,12 @@ angular.module('codexen.directives.card-viewer')
             },
             link:function(scope){
 
+                var watchers;
+                scope.$watch('card', function(){
+                    watchers = scope.$$watchers;
+                    scope.$$watchers = [];
+                });
+
             }
         };
     });

@@ -7,7 +7,7 @@ angular.module('codexen.states.cards.show')
             controllerAs:'vm'
         });
     })
-    .controller('CardsShowController', function(Card, $state){
+    .controller('CardsShowController', function(Card, $state, $scope){
         var vm = this;
 
         var cardId = $state.params.card_id;
@@ -17,5 +17,12 @@ angular.module('codexen.states.cards.show')
         Card.show(cardId).success(function(data){
             console.log(data);
             vm.card = data.card;
+        }).error(function(data, status){
+            if(status==400) $state.go('notfound');
+        });
+
+        $scope.$on('cardDeleted', function(event){
+            event.preventDefault();
+            $state.go('users.show', {user_name:vm.card.owner.name});
         });
     });

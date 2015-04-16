@@ -12,7 +12,7 @@
 <body>
 
 <top-nav></top-nav>
-<div ui-view></div>
+<div ui-view id="main-view"></div>
 <script src="vendor/lodash.js"></script>
 <script src="vendor/codemirror.js"></script>
 <script src="vendor/angular.js"></script>
@@ -69,11 +69,19 @@
     angular.module('codexen.directives', [
         'codexen.directives.top-nav',
         'codexen.directives.signin-form',
-        'codexen.directives.card-viewer'
+        'codexen.directives.card-viewer',
+        'codexen.directives.btn-fork-card',
+        'codexen.directives.btn-mobilize-card',
+        'codexen.directives.btn-edit-card',
+        'codexen.directives.btn-delete-card'
     ]);
     angular.module('codexen.directives.top-nav', ['codexen.core.auth']);
     angular.module('codexen.directives.signin-form', ['codexen.core.auth', 'ui.router']);
     angular.module('codexen.directives.card-viewer', []);
+    angular.module('codexen.directives.btn-fork-card', ['codexen.services.cards', 'ui.bootstrap', 'ui.codemirror']);
+    angular.module('codexen.directives.btn-mobilize-card', []);
+    angular.module('codexen.directives.btn-edit-card', ['ui.router']);
+    angular.module('codexen.directives.btn-delete-card', ['codexen.services.cards', 'ui.bootstrap', 'ui.codemirror']);
 
     // Services
     angular.module('codexen.services', [

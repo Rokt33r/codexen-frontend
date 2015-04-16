@@ -11,7 +11,7 @@ angular.module('codexen.states.users.show')
 
         });
     })
-    .controller('UsersShowController', function(User, $state){
+    .controller('UsersShowController', function(User, $state, $scope, $window, $timeout){
 
         var vm = this;
 
@@ -23,8 +23,24 @@ angular.module('codexen.states.users.show')
             console.log(data.user);
             vm.user = data.user;
 
+            loadCards();
+
+        }).error(function(data, status){
+            console.log('Error occurs !!');
+            console.log('data : ', data);
+            console.log('status : ', status);
+            if(status == 404){
+                $state.go('notfound');
+            }
+        });
+
+        var loadCards = function(){
+            var currentOffset = $window.pageYOffset;
             User.cards(userName, page).success(function(data){
                 vm.cards = data.cards;
+
+                // redirect last page if current page is more than last page
+                if(page > vm.cards.last_page) $state.go('users.show', {user_name:userName, page:vm.cards.last_page});
 
                 vm.currentPage = page;
 
@@ -35,15 +51,16 @@ angular.module('codexen.states.users.show')
                     $state.go('users.show', {user_name:userName, page:vm.currentPage});
 
                 };
-            });
 
-        }).error(function(data, status){
-            console.log('Error occurs !!');
-            console.log('data : ', data);
-            console.log('status : ', status);
-            if(status == 404){
-                $state.go('notfound');
-            }
+                $timeout(function(){
+                    $window.scrollTo(0, currentOffset);
+                }, 0);
+            });
+        };
+
+        $scope.$on('cardDeleted', function(event, card){
+            event.preventDefault();
+            loadCards();
         });
 
     });

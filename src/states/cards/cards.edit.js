@@ -40,6 +40,10 @@ angular.module('codexen.states.cards.edit')
                 });
         };
 
+        vm.cancel = function(){
+            $state.go('cards.show', {card_id:vm.card.id});
+        };
+
         vm.refreshTags = function(search){
             vm.searchedTags = [{
                 name:'Searching...' + search,

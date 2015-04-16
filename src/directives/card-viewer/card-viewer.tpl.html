@@ -1,4 +1,4 @@
-<p ng-bind="card.label"></p>
+<p><a ui-sref="cards.show({card_id:card.id})" ng-bind="card.label"></a></p>
 <h4 ng-bind="card.filename"></h4>
 <ul><li><span ng-repeat="tag in card.tags" ng-bind="tag.name" class="label label-default"></span></li></ul>
 <p ng-bind="card.memo"></p>
@@ -10,7 +10,8 @@
                         }"></ui-codemirror>
 </div>
 <div>
-    <button class="btn btn-strip"><i class="fa fa-code-fork"></i> Fork</button>
-    <button class="btn btn-strip"><i class="fa fa-edit"></i> Edit</button>
-    <button class="btn btn-strip"><i class="fa fa-trash"></i> Delete</button>
+    <button btn-fork-card="card" class="btn btn-strip"></button>
+    <button btn-mobilize-card="card" class="btn btn-strip"></button>
+    <button btn-edit-card="card" class="btn btn-strip"></button>
+    <button btn-delete-card="card" class="btn btn-strip"></button>
 </div>
