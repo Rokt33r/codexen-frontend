@@ -23,16 +23,20 @@ angular.module('codexen.services.users')
 
         };
 
-        var cards = function(user_name, page){
+        var cards = function(user_name, page, search){
 
             var url = Config.rootUrl + 'users/' + user_name + '/cards';
 
             if(!page) page = 1;
 
+            var params = {
+                page:page
+            };
+
+            if(search !== undefined || search === '') params.search = search;
+
             return $http.get(url, {
-                params:{
-                    page:page
-                }
+                params:params
             });
 
         };

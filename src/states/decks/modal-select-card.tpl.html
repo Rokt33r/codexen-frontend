@@ -1,0 +1,29 @@
+<div class="modal-select-card">
+    <div class="modal-header">
+        <h3 class="modal-title">Select Card</h3>
+    </div>
+    <div class="modal-body">
+        <label for="search">Search</label>
+        <input ng-model="search" ng-model-options="{ debounce: 300 }" ng-change="searchCards()" placeholder="write some keywords here." id="search" type="text" class="form-control"/>
+        <ul class="select-card">
+            <li ng-repeat="card in searchedCards.data">
+                <button ng-click="selectCard(card)">
+                    <h5><small>label</small> <span ng-bind="card.label"></span> <small>/</small> <small>filename</small> <span ng-bind="card.filename"></span></h5>
+                    <h5><small>memo</small></h5>
+                    <p ng-bind="card.memo"></p>
+
+                    <div class="panel panel-default">
+                        <ui-codemirror ng-model="card.code" ui-codemirror-opts="{
+                                    lineWrapping : true,
+                                    lineNumbers: true,
+                                    readOnly: 'nocursor'
+                                }"></ui-codemirror>
+                    </div>
+                </button>
+            </li>
+        </ul>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-default" ng-click="cancel()"><i class="fa fa-close"></i> Cancel</button>
+    </div>
+</div>

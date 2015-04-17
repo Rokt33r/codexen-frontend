@@ -1,0 +1,191 @@
+@import "../../bootstrap";
+
+.deck-show{
+    .deck-memo{
+        height: 300px;
+    }
+    .card-list{
+        list-style:none;
+        padding:0;
+        margin:0;
+        li{
+            .card-main{
+                @include clearfix;
+            }
+            padding: 5px;
+            border-bottom:1px solid lightgrey;
+            .card-command-input{
+                width: 30%;
+                float: left;
+                @media (max-width: $screen-xs-max){
+                    width: 100%;
+                }
+            }
+            .card-control-group{
+                height: 33px;
+                width:70%;
+                float: left;
+                @media (max-width: $screen-xs-max){
+                    width: 100%;
+                    margin-top: 5px;
+                }
+                &>button, &>div{
+                    position: absolute;
+                    display: block;
+                }
+            }
+            .card-addon{
+                .form-group{
+                    margin-bottom: 0;
+                    padding: 0 15px;
+                    label{
+                        margin-top: 5px;
+                    }
+                    input{
+                        margin:0 auto;
+                    }
+                }
+            }
+        }
+        li.generator-card, li.runner-card{
+            .card-control-group{
+                div:nth-child(1){
+                    left: 5px;
+                    right: 150px;
+                    button{
+                        border-top-right-radius: 0;
+                        border-bottom-right-radius: 0;
+                        width: 100%;
+                        text-align: left;
+                    }
+                    @media (max-width: $screen-xs-max){
+                        left: 0;
+                    }
+                }
+                button:nth-child(2){
+                    width: 50px;
+                    right: 100px;
+                    border-left: none;
+                }
+                button:nth-child(3){
+                    width: 50px;
+                    right: 50px;
+                    border-left: none;
+                }
+                button:nth-child(4){
+                    width: 50px;
+                    right: 0;
+                    border-left: none;
+                }
+            }
+        }
+        li.group-card{
+            .card-control-group{
+                div:nth-child(1){
+                    left: 5px;
+                    right: 100px;
+                    button{
+                        border-top-right-radius: 0;
+                        border-bottom-right-radius: 0;
+                        width: 100%;
+                        text-align: left;
+                    }
+                    @media (max-width: $screen-xs-max){
+                        left: 0;
+                    }
+                }
+                button:nth-child(2){
+                    width: 50px;
+                    right: 50px;
+                    border-left: none;
+                }
+                button:nth-child(3){
+                    width: 50px;
+                    right: 0;
+                    border-left: none;
+                }
+            }
+        }
+        li.deck-control-group{
+            @include clearfix;
+            padding: 5px;
+            border-bottom: none;
+
+            button{
+                display:block;
+                float:left;
+                margin: 0 5px 0 0;
+            }
+        }
+    }
+
+    .child-card-list{
+        list-style: none;
+        padding: 0;
+        border: 1px solid lightgrey;
+        border-radius: 4px;
+        .child-card-control-group{
+            width: 100%;
+            height: 33px;
+            &>div, &>button{
+                position: absolute;
+            }
+            div:nth-child(1){
+                left: 0;
+                right: 150px;
+                button{
+                    border-top-right-radius: 0;
+                    border-bottom-right-radius: 0;
+                    width: 100%;
+                    text-align: left;
+                }
+            }
+            button:nth-child(2){
+                width: 50px;
+                right: 100px;
+                border-left: none;
+            }
+            button:nth-child(3){
+                width: 50px;
+                right: 50px;
+                border-left: none;
+            }
+            button:nth-child(4){
+                width: 50px;
+                right: 0;
+                border-left: none;
+            }
+        }
+        li:nth-last-child(1){
+            border-bottom: none;
+        }
+    }
+}
+
+.modal-select-card{
+    .select-card{
+        list-style:none;
+        padding:0;
+        li>button{
+            width: 100%;
+            margin: 5px 0;
+            @extend .btn;
+            @extend .btn-default;
+            text-align:left;
+            h5{
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+            p{
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+            .panel{
+                margin-bottom:5px;
+            }
+            .CodeMirror{
+                height:100px;
+            }
+        }
+    }
+}

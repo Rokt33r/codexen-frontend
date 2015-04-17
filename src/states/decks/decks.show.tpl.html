@@ -1,1 +1,170 @@
-<h1>deck</h1>
+<div class="deck-show container-fluid">
+    <div class="row">
+        <div class="col-sm-4 col-md-3">
+            <h2><small>label</small> <span ng-bind="vm.deck.label"></span></h2>
+            <div class="form-group">
+                <label for="memo">memo</label>
+                <textarea ng-model="vm.deck.memo" name="memo" id="memo" class="form-control deck-memo"></textarea>
+            </div>
+        </div>
+        <div class="col-sm-8 col-md-9">
+            <label>Cards</label>
+            <div class="deck panel panel-default">
+                <ul class="card-list">
+                    <li ng-repeat="card in vm.deck.cards" draggable="true" ng-class="{'generator-card':card.type=='generator','runner-card':card.type=='runner','group-card':card.type=='group'}">
+
+                        <!--Generator Card start-->
+                        <div ng-if="card.type=='generator'" class="card-generator">
+                            <div class="card-main">
+                                <input ng-model="card.command" ng-change="
+            vm.emitDeckChanged();" type="text" class="form-control card-command-input"/>
+
+                                <div class="card-control-group btn-group">
+                                    <div>
+                                        <button ng-click="vm.selectCard(card)" class="btn btn-default">
+                                            <i class="fa fa-code"></i>
+                                            <span ng-if="card.card_id == 0">Select Code</span>
+                                            <span ng-if="card.card_id != 0"><span ng-bind="card.card_filename"></span></span>
+                                        </button>
+                                    </div>
+
+                                    <button ng-click="vm.showPreview(card)" ng-disabled="card.card_id == 0" class="btn btn-default"><i class="fa fa-eye fa-fw"></i></button>
+                                    <button ng-click="card.isAddonOpen=!card.isAddonOpen;vm.emitDeckChanged();" ng-class="{active:card.isAddonOpen}" class="btn btn-default"><i class="fa fa-gear"></i> <i class="fa fa-caret-down"></i></button>
+                                    <button ng-click="vm.deleteCard($index)" class="btn btn-default"><i class="fa fa-trash fa-fw"></i></button>
+                                </div>
+                            </div>
+                            <div ng-if="card.isAddonOpen" class="card-addon">
+                                <div class="form-group">
+                                    <label>Override(filename)</label>
+                                    <input ng-model="card.filename" ng-change="vm.emitDeckChanged();" class="form-control input-sm" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Generator Card end-->
+
+                        <!--Runner Card start-->
+                        <div ng-if="card.type=='runner'" class="runner-card">
+                            <div class="card-main">
+                                <input ng-model="card.command" ng-change="
+            vm.emitDeckChanged();" type="text" class="form-control card-command-input"/>
+
+                                <div class="card-control-group btn-group">
+                                    <div>
+                                        <button ng-click="vm.selectCard(card)" class="btn btn-default">
+                                            <i class="fa fa-spinner"></i>
+                                            <span ng-if="card.card_id == 0">Select Code</span>
+                                            <span ng-if="card.card_id != 0"><span ng-bind="card.card_filename"></span></span>
+                                        </button>
+                                    </div>
+
+                                    <button ng-click="vm.showPreview(card)" ng-disabled="card.card_id == 0" class="btn btn-default"><i class="fa fa-eye fa-fw"></i></button>
+                                    <button ng-click="card.isAddonOpen=!card.isAddonOpen;vm.emitDeckChanged();" ng-class="{active:card.isAddonOpen}" class="btn btn-default"><i class="fa fa-gear"></i> <i class="fa fa-caret-down"></i></button>
+                                    <button ng-click="vm.deleteCard($index);vm.emitDeckChanged();" class="btn btn-default"><i class="fa fa-trash fa-fw"></i></button>
+                                </div>
+                            </div>
+                            <div ng-if="card.isAddonOpen" class="card-addon">
+                                <div class="form-group">
+                                    <label>Override(filename)</label>
+                                    <input ng-model="card.runtime" ng-change="vm.emitDeckChanged();" class="form-control input-sm" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Runner Card end-->
+
+                        <!--Group Card start-->
+                        <div ng-if="card.type=='group'" class="group-card">
+                            <div class="card-main">
+                                <input ng-model="card.command" ng-change="
+            vm.emitDeckChanged();" type="text" class="form-control card-command-input"/>
+
+                                <div class="card-control-group btn-group">
+
+                                    <div>
+                                        <button class="btn btn-default">
+                                            <i class="fa fa-chain"></i>
+                                            <span>Group</span>
+                                            <span ng-bind="card.label"></span>
+                                        </button>
+                                    </div>
+
+                                    <button ng-click="card.isAddonOpen=!card.isAddonOpen;vm.emitDeckChanged();" ng-class="{active:card.isAddonOpen}" class="btn btn-default"><i class="fa fa-gear"></i> <i class="fa fa-caret-down"></i></button>
+                                    <button ng-click="vm.deleteCard($index);vm.emitDeckChanged();" class="btn btn-default"><i class="fa fa-trash fa-fw"></i></button>
+                                </div>
+                            </div>
+                            <div ng-if="card.isAddonOpen" class="card-addon">
+                                <div class="form-group">
+                                    <label>Card Chain</label>
+                                    <ul class="child-card-list">
+                                        <li ng-repeat="childCard in card.cards">
+
+                                            <!--Child Generator start-->
+                                            <div ng-if="childCard.type=='generator'" class="child-card-control-group btn-group">
+                                                <div>
+                                                    <button ng-click="vm.selectCard(childCard)" class="btn btn-default">
+                                                        <i class="fa fa-code"></i>
+                                                        <span ng-if="!childCard.card_id">Select Code</span>
+                                                        <span ng-if="childCard.card_id != 0"><span ng-bind="childCard.card_filename"></span></span>
+                                                    </button>
+                                                </div>
+
+                                                <button ng-click="vm.showPreview(childCard)" ng-disabled="childCard.card_id == 0" class="btn btn-default"><i class="fa fa-eye fa-fw"></i></button>
+                                                <button ng-click="childCard.isAddonOpen=!childCard.isAddonOpen" ng-class="{active:childCard.isAddonOpen}" class="btn btn-default"><i class="fa fa-gear"></i> <i class="fa fa-caret-down"></i></button>
+                                                <button ng-click="card.cards.splice($index,1);vm.emitDeckChanged();" class="btn btn-default"><i class="fa fa-trash fa-fw"></i></button>
+                                            </div>
+                                            <div ng-if="childCard.type=='generator' && childCard.isAddonOpen" class="card-addon">
+                                                <div class="form-group">
+                                                    <label>Override(filename)</label>
+                                                    <input ng-model="childCard.filename" ng-change="vm.emitDeckChanged();" class="form-control input-sm" type="text"/>
+                                                </div>
+                                            </div>
+                                            <!--Child Generator end-->
+
+                                            <!--Child Runner start-->
+                                            <div ng-if="childCard.type=='runner'" class="child-card-control-group btn-group">
+                                                <div>
+                                                    <button ng-click="vm.selectCard(childCard)" class="btn btn-default">
+                                                        <i class="fa fa-spinner"></i>
+                                                        <span ng-if="childCard.card_id == 0">Select Code</span>
+                                                        <span ng-if="childCard.card_id != 0"><span ng-bind="childCard.card_filename"></span></span>
+                                                    </button>
+                                                </div>
+
+                                                <button ng-click="vm.showPreview(childCard)" ng-disabled="childCard.card_id == 0" class="btn btn-default"><i class="fa fa-eye fa-fw"></i></button>
+                                                <button ng-click="childCard.isAddonOpen=!childCard.isAddonOpen" ng-class="{active:childCard.isAddonOpen}" class="btn btn-default"><i class="fa fa-gear"></i> <i class="fa fa-caret-down"></i></button>
+                                                <button ng-click="card.cards.splice($index,1);vm.emitDeckChanged();" class="btn btn-default"><i class="fa fa-trash fa-fw"></i></button>
+                                            </div>
+                                            <div ng-if="childCard.type=='runner' && childCard.isAddonOpen" class="card-addon">
+                                                <div class="form-group">
+                                                    <label>Override(runtime)</label>
+                                                    <input ng-model="childCard.runtime" ng-change="vm.emitDeckChanged();" class="form-control input-sm" type="text"/>
+                                                </div>
+                                            </div>
+                                            <!--Child Runner end-->
+
+                                        </li>
+                                        <li>
+                                           <button ng-click="card.cards.push({type:'generator',card_id:0});
+            vm.emitDeckChanged();" class="btn btn-default"><i class="fa fa-code"></i> Generator</button>
+                                           <button ng-click="card.cards.push({type:'runner',card_id:0});
+            vm.emitDeckChanged();" class="btn btn-default"><i class="fa fa-spinner"></i> Runner</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Group Card end-->
+
+                    </li>
+                    <li class="deck-control-group">
+                        <button ng-click="vm.addGenerator()" class="btn btn-default"><i class="fa fa-code"></i> Generator</button>
+                        <button ng-click="vm.addRunner()" class="btn btn-default"><i class="fa fa-spinner"></i> Runner</button>
+                        <button ng-click="vm.addGroup()" class="btn btn-default"><i class="fa fa-chain"></i> Group</button>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <p ng-if="vm.message" ng-bind-html="vm.message" class="alert alert-info"></p>
+            </div>
+        </div>
+    </div>
+</div>
