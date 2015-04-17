@@ -26,12 +26,10 @@ angular.module('codexen.states.users.show')
             loadCards();
 
         }).error(function(data, status){
-            console.log('Error occurs !!');
+            console.log('Error !! ', status);
             console.log('data : ', data);
-            console.log('status : ', status);
-            if(status == 404){
-                $state.go('notfound');
-            }
+
+            $state.go('notfound');
         });
 
         var loadCards = function(){

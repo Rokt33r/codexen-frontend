@@ -7,7 +7,7 @@
         color: white;
         margin-top: 7px;
         width: 100%;
-        &:hover{
+        &:hover, &:active:hover{
             background-color: #286090;
             border-color: #204d74;
             color: white;
