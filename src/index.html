@@ -55,7 +55,10 @@
         'codexen.states.decks.show',
         'codexen.states.tags',
         'codexen.states.tags.index',
-        'codexen.states.tags.show'
+        'codexen.states.tags.show',
+        'codexen.states.explore',
+        'codexen.states.explore.tags',
+        'codexen.states.explore.users'
     ]);
     angular.module('codexen.states.home', ['ui.router']);
     angular.module('codexen.states.welcome', ['ui.router']);
@@ -73,6 +76,9 @@
     angular.module('codexen.states.tags', ['ui.router']);
     angular.module('codexen.states.tags.index', ['ui.router', 'codexen.services.tags']);
     angular.module('codexen.states.tags.show', ['ui.router', 'codexen.services.tags']);
+    angular.module('codexen.states.explore', ['ui.router']);
+    angular.module('codexen.states.explore.tags', ['ui.router', 'codexen.services.tags']);
+    angular.module('codexen.states.explore.users', ['ui.router', 'codexen.services.users']);
 
     // Error states
     angular.module('codexen.states.notfound', ['ui.router']);

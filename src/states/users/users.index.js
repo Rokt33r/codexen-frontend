@@ -26,7 +26,7 @@ angular.module('codexen.states.users.index')
 
                 console.log('Changed : ', vm.currentPage);
 
-                $state.go('users.index', {page:vm.currentPage});
+                $state.go('explore.users', {page:vm.currentPage});
 
             };
 
