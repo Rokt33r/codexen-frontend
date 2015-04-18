@@ -186,7 +186,7 @@ angular.module('codexen.states.decks.show')
                 .success(function(data){
                     isSaving = false;
 
-                    vm.message = '<i class="fa fa-check"></i> Successfully saved.';
+                    vm.message = '<i class="fa fa-check"></i> Successfully saved at ' + (new Date()).toString();
 
                     if(isQueued){
                         isQueued = false;

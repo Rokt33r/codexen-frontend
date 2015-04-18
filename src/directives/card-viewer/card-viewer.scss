@@ -1,5 +1,37 @@
+@import "../../bootstrap";
+
 card-viewer{
+    h4{
+        margin-bottom: 0;
+    }
+
+    .card-detail{
+        opacity: 0.5;
+        font-size: 0.7em;
+        &:hover{
+            opacity: 0.8;
+        }
+    }
+
+    .tags{
+        @include clearfix;
+        list-style: none;
+        padding: 0;
+        li{
+            margin: 0 2px;
+            float: left;
+        }
+    }
+
+    .panel{
+        margin-bottom:0;
+    }
+
     .CodeMirror{
         height: 300px;
+    }
+
+    hr{
+        margin-top: 0;
     }
 }
