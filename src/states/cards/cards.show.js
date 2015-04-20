@@ -15,7 +15,6 @@ angular.module('codexen.states.cards.show')
         vm.card = {};
 
         Card.show(cardId).success(function(data){
-            console.log(data);
             vm.card = data.card;
         }).error(function(data, status){
             if(status==400) $state.go('notfound');

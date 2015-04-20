@@ -15,6 +15,8 @@ angular.module('codexen.states.tags.show')
         var tagName = $state.params.tag_name;
         var page = $state.params.page;
 
+        vm.isLoaded = false;
+
         Tag.show(tagName).success(function(data){
             console.log(data.tag);
             vm.tag = data.tag;
@@ -48,6 +50,7 @@ angular.module('codexen.states.tags.show')
             var currentOffset = $window.pageYOffset;
             Tag.cards(tagName, page).success(function(data){
                 vm.cards = data.cards;
+                vm.isLoaded = true;
 
                 // redirect last page if current page is more than last page
                 if(page > vm.cards.last_page) $state.go('tags.show', {tag_name:tagName, page:vm.cards.last_page});

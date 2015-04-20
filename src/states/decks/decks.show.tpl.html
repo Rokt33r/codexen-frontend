@@ -24,7 +24,7 @@
                                         <button ng-click="vm.selectCard(card)" class="btn btn-default">
                                             <i class="fa fa-code"></i>
                                             <span ng-if="card.card_id == 0">Select Code</span>
-                                            <span ng-if="card.card_id != 0"><span ng-bind="card.card_filename"></span></span>
+                                            <span ng-if="card.card_id != 0"><span ng-bind="card.card.filename"></span></span>
                                         </button>
                                     </div>
 
@@ -53,7 +53,7 @@
                                         <button ng-click="vm.selectCard(card)" class="btn btn-default">
                                             <i class="fa fa-spinner"></i>
                                             <span ng-if="card.card_id == 0">Select Code</span>
-                                            <span ng-if="card.card_id != 0"><span ng-bind="card.card_filename"></span></span>
+                                            <span ng-if="card.card_id != 0"><span ng-bind="card.card.filename"></span></span>
                                         </button>
                                     </div>
 
@@ -64,7 +64,7 @@
                             </div>
                             <div ng-if="card.isAddonOpen" class="card-addon">
                                 <div class="form-group">
-                                    <label>Override(filename)</label>
+                                    <label>Override(runtime)</label>
                                     <input ng-model="card.runtime" ng-change="vm.emitDeckChanged();" class="form-control input-sm" type="text"/>
                                 </div>
                             </div>
@@ -103,7 +103,7 @@
                                                     <button ng-click="vm.selectCard(childCard)" class="btn btn-default">
                                                         <i class="fa fa-code"></i>
                                                         <span ng-if="!childCard.card_id">Select Code</span>
-                                                        <span ng-if="childCard.card_id != 0"><span ng-bind="childCard.card_filename"></span></span>
+                                                        <span ng-if="childCard.card_id != 0"><span ng-bind="childCard.card.filename"></span></span>
                                                     </button>
                                                 </div>
 
@@ -125,7 +125,7 @@
                                                     <button ng-click="vm.selectCard(childCard)" class="btn btn-default">
                                                         <i class="fa fa-spinner"></i>
                                                         <span ng-if="childCard.card_id == 0">Select Code</span>
-                                                        <span ng-if="childCard.card_id != 0"><span ng-bind="childCard.card_filename"></span></span>
+                                                        <span ng-if="childCard.card_id != 0"><span ng-bind="childCard.card.filename"></span></span>
                                                     </button>
                                                 </div>
 

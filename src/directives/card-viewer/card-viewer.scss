@@ -20,6 +20,9 @@ card-viewer{
         li{
             margin: 0 2px;
             float: left;
+            .label:hover{
+                opacity: 0.6;
+            }
         }
     }
 

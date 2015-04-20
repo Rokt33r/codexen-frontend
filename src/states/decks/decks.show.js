@@ -6,21 +6,37 @@ angular.module('codexen.states.decks.show')
             controller:'DecksShowController as vm'
         });
     })
-    .controller('DecksShowController', function($state, Deck, $modal, $scope, $timeout){
+    .controller('DecksShowController', function($state, Deck, $modal, $scope, $timeout, $filter){
         var vm = this;
 
         //init
         var deckLabel = $state.params.deck_label;
         var isFetched = false;
 
+        var attachCard = function(cards, fetchedCards){
+            cards.map(function(card){
+                if(angular.isArray(card.cards)) attachCard(card.cards, fetchedCards);
+
+                if(!card.card_id)return;
+
+                fetchedCards.forEach(function(aCard){
+                    if(aCard.id == card.card_id)
+                        card.card = aCard;
+                });
+            });
+        };
+
         Deck.show(deckLabel)
             .success(function(data){
 
                 vm.deck = data.deck;
 
+                attachCard(vm.deck.cards, data.cards);
+
                 $timeout(function(){
                     isFetched = true;
                 }, 0);
+
             })
             .error(function(data, status){
                 console.log('Error !! ', status);
@@ -107,7 +123,7 @@ angular.module('codexen.states.decks.show')
                 }
             }).result.then(function(selectedCard){
                     card.card_id = selectedCard.id;
-                    card.card_filename = selectedCard.filename;
+                    card.card = selectedCard;
                 });
         };
 
@@ -180,7 +196,7 @@ angular.module('codexen.states.decks.show')
 
             var params = {
                 memo:vm.deck.memo,
-                cards:vm.deck.cards
+                cards:$filter('deck')(vm.deck.cards)
             };
             Deck.update(deckLabel, params)
                 .success(function(data){
@@ -228,14 +244,16 @@ angular.module('codexen.states.decks.show')
                             type:card.type,
                             command:card.command,
                             card_id:card.card_id,
-                            filename:card.filename
+                            filename:card.filename,
+                            isAddonOpen:card.isAddonOpen
                         };
                     case 'runner':
                         return {
                             type:card.type,
                             command:card.command,
                             card_id:card.card_id,
-                            runtime:card.runtime
+                            runtime:card.runtime,
+                            isAddonOpen:card.isAddonOpen
                         };
                     case 'group':
                         if(!angular.isArray(card.cards)) return [];
@@ -245,13 +263,15 @@ angular.module('codexen.states.decks.show')
                                     return {
                                         type: childCard.type,
                                         card_id: childCard.card_id,
-                                        filename: childCard.filename
+                                        filename: childCard.filename,
+                                        isAddonOpen: childCard.isAddonOpen
                                     };
                                 case 'runner':
                                     return {
                                         type: childCard.type,
                                         card_id: childCard.card_id,
-                                        runtime: childCard.runtime
+                                        runtime: childCard.runtime,
+                                        isAddonOpen: childCard.isAddonOpen
                                     };
                             }
                         });
@@ -259,7 +279,8 @@ angular.module('codexen.states.decks.show')
                             type:card.type,
                             command:card.command,
                             label:card.label,
-                            cards:childCards
+                            cards:childCards,
+                            isAddonOpen:card.isAddonOpen
                         };
                 }
             });

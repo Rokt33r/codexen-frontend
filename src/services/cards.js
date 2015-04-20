@@ -31,11 +31,18 @@ angular.module('codexen.services.cards')
             return $http.post(url);
         };
 
+        var mobilize = function(cardId, params){
+            var url = Config.rootUrl + 'cards/' + cardId + '/mobilize';
+
+            return $http.post(url, params);
+        };
+
         return {
             store:store,
             show:show,
             update:update,
             destroy:destroy,
-            fork:fork
+            fork:fork,
+            mobilize:mobilize
         };
     });

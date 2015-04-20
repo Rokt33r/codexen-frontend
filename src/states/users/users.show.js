@@ -19,6 +19,8 @@ angular.module('codexen.states.users.show')
 
         var userName = $state.params.user_name;
 
+        vm.isLoaded = false;
+
         User.show(userName).success(function(data){
             console.log(data.user);
             vm.user = data.user;
@@ -36,6 +38,7 @@ angular.module('codexen.states.users.show')
             var currentOffset = $window.pageYOffset;
             User.cards(userName, page).success(function(data){
                 vm.cards = data.cards;
+                vm.isLoaded = true;
 
                 // redirect last page if current page is more than last page
                 if(page > vm.cards.last_page) $state.go('users.show', {user_name:userName, page:vm.cards.last_page});

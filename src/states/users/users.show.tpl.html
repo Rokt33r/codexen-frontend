@@ -9,7 +9,10 @@
         <div class="col-sm-8 col-md-9">
 
             <ul class="card-list">
-                <li ng-if="!vm.cards.data.length">
+                <li ng-if="!vm.isLoaded">
+                    <h3>Loading...</h3>
+                </li>
+                <li ng-if="vm.isLoaded&&!vm.cards.data.length">
                     <h3>No Cards</h3>
                 </li>
                 <li ng-repeat="card in vm.cards.data">

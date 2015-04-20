@@ -1,3 +1,5 @@
+@import "../../bootstrap";
+
 .cards-show, .cards-create, .cards-edit{
      .CodeMirror{
          min-height:500px;
@@ -8,3 +10,18 @@
          }
      }
  }
+
+.cards-show{
+    .tags{
+        @include clearfix;
+        list-style: none;
+        padding: 0;
+        li{
+            margin: 0 2px;
+            float: left;
+            .label:hover{
+                opacity: 0.6;
+            }
+        }
+    }
+}
