@@ -18,6 +18,7 @@ angular.module('codexen.core.config')
         uiSelectConfig.appendToBody = true;
     })
     .factory('Config', function(){
+        //var rootUrl = 'http://api.codexen.org/v0/';
         var rootUrl = 'http://localhost:8000/v0/';
 
         return {

@@ -1,5 +1,5 @@
 <h4><a ui-sref="cards.show({card_id:card.id})">
-    <small>label</small> <span ng-bind="card.label"></span> <small>/</small> <small>filename</small> <span ng-bind="card.filename"></span></a><br/>
+    <span ng-bind="card.label"></span> <small>/</small> <span ng-bind="card.filename"></span></a><br/>
 
     <small class="card-detail">Updated at <span ng-bind="card.updated_at"></span> by <a ui-sref="users.show({user_name:card.owner.name})" ng-bind-html="card.owner.name + ' <img src=\'//www.gravatar.com/avatar/'+  card.owner.md5+'?s=20\' class=\'img-circle\'>'"></a></small>
 </h4>

@@ -12,6 +12,7 @@ angular.module('codexen.directives.btn-mobilize-card')
                 element.on('click', function(){
                     $modal.open({
                         templateUrl:'directives/btn-mobilize-card/modal-mobilize-card.tpl.html',
+                        scope:scope,
                         resolve:{
                             card:function(){
                                 return scope.card;
@@ -59,6 +60,7 @@ angular.module('codexen.directives.btn-mobilize-card')
                                 Card.mobilize($scope.card.id, params)
                                     .success(function(data){
                                         console.log('Successfully done.');
+                                        $scope.$emit('cardMobilized');
                                         $modalInstance.close();
                                     })
                                     .error(function(data, status){

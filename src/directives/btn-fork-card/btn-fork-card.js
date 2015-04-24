@@ -24,10 +24,6 @@ angular.module('codexen.directives.btn-fork-card')
 
                             $scope.card = card;
 
-                            $scope.mobilize = function(){
-
-                            };
-
                             $scope.edit = function () {
                                 $state.go('cards.edit', {card_id:card.id});
                                 $modalInstance.dismiss();
@@ -53,6 +49,10 @@ angular.module('codexen.directives.btn-fork-card')
                                     editor.refresh();
                                 }, 0);
                             }
+
+                            $scope.$on('cardMobilized', function(){
+                                $modalInstance.dismiss();
+                            });
                         }
                     }).result.then(function(result){
                         if(result.type == 'undo'){
