@@ -4,6 +4,10 @@
             <div class="user-info">
                 <img ng-src="//www.gravatar.com/avatar/{{vm.user.md5}}?s=100" alt="profile photo" class="img-circle"/>
                 <h2 ng-bind="vm.user.name"></h2>
+
+                <div ng-if="!vm.isMe" class="form-group">
+                    <button btn-follow-user='vm.user' class="btn btn-default"></button>
+                </div>
             </div>
         </div>
         <div class="col-sm-8 col-md-9">

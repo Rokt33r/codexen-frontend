@@ -94,7 +94,8 @@
         'codexen.directives.btn-fork-card',
         'codexen.directives.btn-mobilize-card',
         'codexen.directives.btn-edit-card',
-        'codexen.directives.btn-delete-card'
+        'codexen.directives.btn-delete-card',
+        'codexen.directives.btn-follow-user'
     ]);
     angular.module('codexen.directives.top-nav', ['codexen.core.auth']);
     angular.module('codexen.directives.signin-form', ['codexen.core.auth', 'ui.router']);
@@ -103,6 +104,8 @@
     angular.module('codexen.directives.btn-mobilize-card', []);
     angular.module('codexen.directives.btn-edit-card', ['ui.router']);
     angular.module('codexen.directives.btn-delete-card', ['codexen.services.cards', 'ui.bootstrap', 'ui.codemirror']);
+    angular.module('codexen.directives.btn-follow-user', ['codexen.services.users', 'ui.bootstrap']);
+
 
     // Services
     angular.module('codexen.services', [

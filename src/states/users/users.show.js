@@ -11,7 +11,7 @@ angular.module('codexen.states.users.show')
 
         });
     })
-    .controller('UsersShowController', function(User, $state, $scope, $window, $timeout){
+    .controller('UsersShowController', function(User, $state, $scope, $window, $timeout, Auth){
 
         var vm = this;
 
@@ -21,11 +21,19 @@ angular.module('codexen.states.users.show')
 
         vm.isLoaded = false;
 
+        vm.isMe = false;
+
         User.show(userName).success(function(data){
             console.log(data.user);
             vm.user = data.user;
 
+            vm.isMe = Auth.getCurrentUser()?Auth.getCurrentUser().id == vm.user.id:false;
+
             loadCards();
+
+            $timeout(function(){
+                $scope.$broadcast('userFetched');
+            },0);
 
         }).error(function(data, status){
             console.log('Error !! ', status);
