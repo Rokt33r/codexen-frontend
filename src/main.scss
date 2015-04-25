@@ -1,8 +1,8 @@
 @import "bootstrap";
 
 body, label{
-    font-family: 'Lato', sans-serif;
-    font-weight:400;
+    font-family: 'Lato', sans-serif !important;
+    font-weight:400 !important;
 }
 
 nav.top-nav{
@@ -10,7 +10,7 @@ nav.top-nav{
 }
 
 h1, h2{
-    font-weight: 300;
+    font-weight: 300 !important;
 }
 
 blockquote{

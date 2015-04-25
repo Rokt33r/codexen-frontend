@@ -1,10 +1,8 @@
 module.exports = {
-    //
-    url:'codexen.app',
-    api_url:'api.codexen.app',
 
     // build path
     build_path:'build',
+    dist_path:'dist',
 
     // src path
     src_path:{
