@@ -112,12 +112,14 @@
         'codexen.services.users',
         'codexen.services.cards',
         'codexen.services.tags',
-        'codexen.services.decks'
+        'codexen.services.decks',
+        'codexen.services.request-invitation'
     ]);
     angular.module('codexen.services.users', ['codexen.core.config', 'codexen.core.auth']);
     angular.module('codexen.services.cards', ['codexen.core.config']);
     angular.module('codexen.services.tags', ['codexen.core.config']);
     angular.module('codexen.services.decks', ['codexen.core.config']);
+    angular.module('codexen.services.request-invitation', []);
 
     // Etc
     angular.module('templates', []);

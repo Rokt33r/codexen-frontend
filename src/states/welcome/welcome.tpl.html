@@ -18,14 +18,16 @@
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3 request-key" id="request-key">
 
-                    <h2>Request an activation key</h2>
+                    <h2>Request Beta Invitation</h2>
                     <p>CodeXen is on <strong>closed release</strong> now. You need an activation to sign up.</p>
 
-                    <form method="POST" action="http://codexen.org/request" accept-charset="UTF-8">
+                    <form ng-submit="vm.sendRequest()">
+                        <p class="alert alert-danger" ng-if="vm.requestError" ng-bind="vm.requestError"></p>
+                        <p class="alert alert-success" ng-if="vm.requestSuccess" ng-bind="vm.requestSuccess"></p>
 
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input class="form-control" name="email" type="text" value="" id="email">
+                            <input ng-model="vm.requestEmail" class="form-control" name="email" type="text" value="" id="email">
                         </div>
 
                         <div class="form-group">
@@ -35,7 +37,7 @@
                     </form>
 
                     <blockquote>
-                        Activation key will be sent in 1~10 days.
+                        Invitation will be sent in 1~10 days.
                     </blockquote>
                 </div>
             </div>
