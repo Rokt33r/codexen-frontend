@@ -28,7 +28,7 @@ angular.module('codexen.states.welcome')
                 })
                 .error(function(data, status){
                     if(status == 400){
-                        vm.requestError = data.errror;
+                        vm.requestError = data.error;
                     }
                     console.log('Error : ', status);
                     console.log(data);
