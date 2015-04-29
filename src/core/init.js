@@ -1,5 +1,5 @@
 angular.module('codexen.core.init')
-    .run(function(Auth, $urlRouter, $rootScope, $state){
+    .run(function(Auth, $urlRouter, $rootScope, $state, $window, $location){
         Auth.authenticateToken(function(){
             $urlRouter.sync();
         },function(){
@@ -50,7 +50,11 @@ angular.module('codexen.core.init')
 
         });
         $rootScope.$on('$stateChangeSuccess', function(event, toState){
+
             if(Auth.hasPendingState() && toState.name!=='signin') Auth.releasePendingState();
+
+            // for analytics
+            $window.ga('send', 'pageview', { page: $location.path() });
         });
 
         $urlRouter.listen();

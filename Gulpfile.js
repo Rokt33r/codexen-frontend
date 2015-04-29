@@ -89,107 +89,48 @@ gulp.task('default', function(cb){
 });
 
 // `dist` task must be used after `build` task done.
+gulp.task('del-dist', function(cb){
+    del(dist_path + '/**/*', cb);
+});
+
+gulp.task('build-dist', function(){
+    var js = gulp.src([build_path + '/**/*.js', '!'+build_path+'/vendor/**/*.js'])
+        .pipe(concat('app.js'))
+        .pipe(rev())
+        .pipe(gulp.dest(dist_path));
+
+    var css = gulp.src(build_path + '/all.css')
+        .pipe(rev())
+        .pipe(gulp.dest(dist_path));
+
+    var vendor = gulp.src(build_path + '/vendor/**/*')
+        .pipe(gulp.dest(dist_path + '/vendor'));
+
+    return merge(js, css, vendor);
+});
+
+gulp.task('index-dist', function(){
+    var files = globby.sync([dist_path + '/**/*', '!'+dist_path+'/vendor/**/*']);
+
+    var filter = function(files, ext){
+        return files.filter(function(file){
+            var reg = new RegExp('.+\.'+ext+'$');
+            return file.match(reg);
+        }).map(function(file){
+            return file.replace('dist/', '');
+        });
+    };
+    var scripts = filter(files, 'js');
+    var styles = filter(files, 'css');
+
+    return gulp.src('src/index.html')
+        .pipe(template({
+            scripts:scripts,
+            styles:styles
+        }))
+        .pipe(gulp.dest(dist_path));
+});
+
 gulp.task('dist', function(cb){
-
-    // clear dist
-    var q = new Promise(function(resolve, reject){
-        del(dist_path + '/**/*', resolve());
-    });
-
-    // cp and rev script & styles
-    var q2 = q.then(function(){
-        var js = gulp.src([build_path + '/**/*.js', '!'+build_path+'/vendor/**/*.js'])
-            .pipe(concat('app.js'))
-            .pipe(rev())
-            .pipe(gulp.dest(dist_path));
-
-        var css = gulp.src(build_path + '/all.css')
-            .pipe(rev())
-            .pipe(gulp.dest(dist_path));
-
-        var vendor = gulp.src(build_path + '/vendor/**/*')
-            .pipe(gulp.dest(dist_path + '/vendor'));
-
-        return merge(js, css);
-
-    });
-
-    return q2.then(function(){
-        var files = globby.sync([dist_path + '/**/*', '!'+dist_path+'/vendor/**/*']);
-
-            var filter = function(files, ext){
-                return files.filter(function(file){
-                    var reg = new RegExp('.+\.'+ext+'$');
-                    return file.match(reg);
-                }).map(function(file){
-                    return file.replace('dist/', '');
-                });
-            };
-            var scripts = filter(files, 'js');
-            var styles = filter(files, 'css');
-
-            return gulp.src('src/index.html')
-                .pipe(template({
-                    scripts:scripts,
-                    styles:styles
-                }))
-                .pipe(gulp.dest(dist_path))
-    });
-        //    .on('end', function(){
-        //    var files = globby.sync([dist_path + '/**/*', '!'+dist_path+'/vendor/**/*']);
-        //
-        //    var filter = function(files, ext){
-        //        return files.filter(function(file){
-        //            var reg = new RegExp('.+\.'+ext+'$');
-        //            return file.match(reg);
-        //        }).map(function(file){
-        //            return file.replace('build/', '');
-        //        });
-        //    };
-        //    var scripts = filter(files, 'js');
-        //    var styles = filter(files, 'css');
-        //
-        //    gulp.src('src/index.html')
-        //        .pipe(template({
-        //            scripts:scripts,
-        //            styles:styles
-        //        }))
-        //        .pipe(gulp.dest(dist_path + '/index.html'))
-        //        .on('end', function(){
-        //            cb();
-        //        });
-        //});
-    //
-    //});
-
-    //console.log(q2);
-    //// build index.html
-    //var q3 = q2.then(function(){
-    //    var files = globby.sync([dist_path + '/**/*', '!'+dist_path+'/vendor/**/*']);
-    //
-    //    var filter = function(files, ext){
-    //        return files.filter(function(file){
-    //            var reg = new RegExp('.+\.'+ext+'$');
-    //            return file.match(reg);
-    //        }).map(function(file){
-    //            return file.replace('build/', '');
-    //        });
-    //    };
-    //    var scripts = filter(files, 'js');
-    //    var styles = filter(files, 'css');
-    //
-    //    gulp.src('src/index.html')
-    //        .pipe(template({
-    //            scripts:scripts,
-    //            styles:styles
-    //        }))
-    //        .pipe(gulp.dest(dist_path))
-    //        .on('end', function(){
-    //            q3.resolve();
-    //        });
-    //});
-    //
-    //q3.then(function(){
-    //    cb();
-    //});
+    runSequence('del-dist', 'build-dist', 'index-dist', cb);
 });
