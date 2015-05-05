@@ -1,35 +1,33 @@
-angular.module('codexen.states.users.index')
-    .config(function($stateProvider){
-        $stateProvider.state('users.index', {
-            url:'/list?{page:int}',
-            templateUrl:'states/users/users.index.tpl.html',
-            controller:'UsersIndexController',
-            controllerAs:'vm',
-            params:{
-                page:1
-            }
-        })
+/* global angular */
+angular.module('codexen.states.users')
+  .config(function ($stateProvider) {
+    $stateProvider.state('users.index', {
+      url: '/list?{page:int}',
+      templateUrl: 'states/users/users.index.tpl.html',
+      controller: 'UsersIndexController',
+      controllerAs: 'vm',
+      params: {
+        page: 1
+      }
     })
-    .controller('UsersIndexController', function (User, $state) {
+  })
+  .controller('UsersIndexController', function (User, $state) {
+    var vm = this
 
-        var vm = this;
+    var page = $state.params.page
 
-        var page = $state.params.page;
+    User.index(page).success(function (data) {
+      vm.users = data.users
 
-        User.index(page).success(function(data){
+      vm.currentPage = page
 
-            vm.users = data.users;
+      vm.changePage = function () {
+        console.log('Changed : ', vm.currentPage)
 
-            vm.currentPage = page;
+        $state.go('explore.users', {page: vm.currentPage})
 
-            vm.changePage = function(){
+      }
 
-                console.log('Changed : ', vm.currentPage);
+    })
 
-                $state.go('explore.users', {page:vm.currentPage});
-
-            };
-
-        });
-
-    });
+  })

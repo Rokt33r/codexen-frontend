@@ -1,48 +1,48 @@
-angular.module('codexen.services.cards')
-    .factory('Card', function($http, Config){
+/* global angular */
+angular.module('codexen.services')
+  .factory('Card', function ($http, apiUrl) {
+    var store = function (params) {
+      var url = apiUrl + 'cards'
 
-        var store = function(params){
-            var url = Config.rootUrl + 'cards';
+      return $http.post(url, params)
+    }
 
-            return $http.post(url, params);
-        };
+    var show = function (cardId) {
+      var url = apiUrl + 'cards/' + cardId
 
-        var show = function(cardId) {
-            var url = Config.rootUrl + 'cards/' + cardId;
+      return $http.get(url)
+    }
 
-            return $http.get(url);
-        };
+    var update = function (cardId, params) {
+      var url = apiUrl + 'cards/' + cardId
 
-        var update = function(cardId, params){
-            var url = Config.rootUrl + 'cards/' + cardId;
+      return $http.put(url, params)
+    }
 
-            return $http.put(url, params);
-        };
+    var destroy = function (cardId) {
+      var url = apiUrl + 'cards/' + cardId
 
-        var destroy = function(cardId){
-            var url = Config.rootUrl + 'cards/' + cardId;
+      return $http.delete(url)
+    }
 
-            return $http.delete(url);
-        };
+    var fork = function (cardId) {
+      var url = apiUrl + 'cards/' + cardId + '/fork'
 
-        var fork = function(cardId){
-            var url = Config.rootUrl + 'cards/' + cardId + '/fork';
+      return $http.post(url)
+    }
 
-            return $http.post(url);
-        };
+    var mobilize = function (cardId, params) {
+      var url = apiUrl + 'cards/' + cardId + '/mobilize'
 
-        var mobilize = function(cardId, params){
-            var url = Config.rootUrl + 'cards/' + cardId + '/mobilize';
+      return $http.post(url, params)
+    }
 
-            return $http.post(url, params);
-        };
-
-        return {
-            store:store,
-            show:show,
-            update:update,
-            destroy:destroy,
-            fork:fork,
-            mobilize:mobilize
-        };
-    });
+    return {
+      store: store,
+      show: show,
+      update: update,
+      destroy: destroy,
+      fork: fork,
+      mobilize: mobilize
+    }
+  })

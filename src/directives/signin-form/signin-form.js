@@ -1,33 +1,30 @@
-angular.module('codexen.directives.signin-form')
-    .directive('signinForm', function(Auth, $state){
-        return {
-            templateUrl:'directives/signin-form/signin-form.tpl.html',
-            scope:{},
-            link:function(scope, element){
-                scope.signin = function(){
+/* global angular */
+angular.module('codexen.directives')
+  .directive('signinForm', function (Auth, $state) {
+    return {
+      templateUrl: 'directives/signin-form/signin-form.tpl.html',
+      scope: {},
+      link: function (scope, element) {
+        scope.signin = function () {
+          scope.error = null
 
-                    scope.error = null;
+          Auth.attempt(scope.email, scope.password, function () {
+            if (Auth.hasPendingState()) {
+              var pending = Auth.releasePendingState()
 
-                    Auth.attempt(scope.email, scope.password, function(){
+              $state.go(pending.state, pending.params)
 
-                        if(Auth.hasPendingState()){
-
-                            var pending = Auth.releasePendingState();
-
-                            $state.go(pending.state, pending.params);
-
-                            return;
-                        }
-
-                        $state.go('home');
-
-                    }, function(data){
-
-                        scope.error = data.error;
-
-                    });
-                }
-
+              return
             }
+
+            $state.go('home')
+
+          }, function (data) {
+            scope.error = data.error
+
+          })
         }
-    });
+
+      }
+    }
+  })

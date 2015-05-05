@@ -3,14 +3,13 @@
 <head>
     <meta charset="utf-8">
     <title>Codexen!</title>
-    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="vendor/codemirror.css"/>
     <link rel="stylesheet" href="vendor/css/font-awesome.css">
     <link rel="stylesheet" href="vendor/select.css">
 
     <% styles.forEach(function(style){%>
     <link href="<%=style%>" rel="stylesheet">
-    <% });%>
+    <% })%>
 </head>
 <body>
 
@@ -26,119 +25,81 @@
 <script src="vendor/angular-sanitize.js"></script>
 <script src="vendor/select.js"></script>
 <script charset="utf-8">
+/* global angular */
 
-    // App
-    angular.module('codexen', ['templates', 'angular-jwt', 'ui.bootstrap', 'ui.codemirror', 'ngSanitize', 'ui.select', 'ui.router', 'codexen.core', 'codexen.states', 'codexen.directives', 'codexen.services']);
+// App
+angular.module('codexen', [
+  'templates',
+  'angular-jwt',
+  'ui.bootstrap',
+  'ui.codemirror',
+  'ngSanitize',
+  'ui.select',
+  'ui.router',
+  'codexen.core',
+  'codexen.states',
+  'codexen.directives',
+  'codexen.services'])
+  .constant('env', '<%= env %>')
 
-    // Core Modules
-    angular.module('codexen.core', [
-        'codexen.core.init',
-        'codexen.core.config',
-        'codexen.core.auth'
-    ]);
-    angular.module('codexen.core.init', ['ui.router', 'codexen.core.auth']);
-    angular.module('codexen.core.config', ['ui.router']);
-    angular.module('codexen.core.auth', ['ui.router', 'codexen.core.config']);
+// Core Modules
+angular.module('codexen.core', [
+  'codexen.core.init',
+  'codexen.core.config',
+  'codexen.core.auth'
+])
+angular.module('codexen.core.init', ['ui.router', 'codexen.core.auth'])
+angular.module('codexen.core.config', ['ui.router'])
+angular.module('codexen.core.auth', ['ui.router', 'codexen.core.config'])
 
-    // States
-    angular.module('codexen.states', [
-        'codexen.states.home',
-        'codexen.states.welcome',
-        'codexen.states.signin',
-        'codexen.states.notfound',
-        'codexen.states.users',
-        'codexen.states.users.index',
-        'codexen.states.users.show',
-        'codexen.states.cards',
-        'codexen.states.cards.create',
-        'codexen.states.cards.show',
-        'codexen.states.cards.edit',
-        'codexen.states.decks',
-        'codexen.states.decks.mydeck',
-        'codexen.states.decks.show',
-        'codexen.states.tags',
-        'codexen.states.tags.index',
-        'codexen.states.tags.show',
-        'codexen.states.explore',
-        'codexen.states.explore.tags',
-        'codexen.states.explore.users'
-    ]);
-    angular.module('codexen.states.home', ['ui.router']);
-    angular.module('codexen.states.welcome', ['ui.router']);
-    angular.module('codexen.states.signin', ['ui.router', 'codexen.core.auth']);
-    angular.module('codexen.states.users', ['ui.router']);
-    angular.module('codexen.states.users.index', ['ui.router', 'codexen.services.users']);
-    angular.module('codexen.states.users.show', ['ui.router', 'codexen.services.users']);
-    angular.module('codexen.states.cards', ['ui.router']);
-    angular.module('codexen.states.cards.create', ['ui.router', 'codexen.services.cards', 'codexen.services.tags']);
-    angular.module('codexen.states.cards.show', ['ui.router', 'codexen.services.cards', 'codexen.services.tags']);
-    angular.module('codexen.states.cards.edit', ['ui.router', 'codexen.services.cards', 'codexen.services.tags']);
-    angular.module('codexen.states.decks', ['ui.router']);
-    angular.module('codexen.states.decks.mydeck', ['ui.router', 'codexen.core.auth']);
-    angular.module('codexen.states.decks.show', ['ui.router', 'codexen.services.decks', 'codexen.services.users', 'codexen.services.cards']);
-    angular.module('codexen.states.tags', ['ui.router']);
-    angular.module('codexen.states.tags.index', ['ui.router', 'codexen.services.tags']);
-    angular.module('codexen.states.tags.show', ['ui.router', 'codexen.services.tags']);
-    angular.module('codexen.states.explore', ['ui.router']);
-    angular.module('codexen.states.explore.tags', ['ui.router', 'codexen.services.tags']);
-    angular.module('codexen.states.explore.users', ['ui.router', 'codexen.services.users']);
+// States
+angular.module('codexen.states', [
+  'codexen.states.home',
+  'codexen.states.welcome',
+  'codexen.states.signin',
+  'codexen.states.notfound',
+  'codexen.states.users',
+  'codexen.states.cards',
+  'codexen.states.decks',
+  'codexen.states.tags',
+  'codexen.states.explore',
+])
+angular.module('codexen.states.home', ['ui.router'])
+angular.module('codexen.states.welcome', ['ui.router'])
+angular.module('codexen.states.signin', ['ui.router', 'codexen.core.auth'])
+angular.module('codexen.states.users', ['ui.router'])
+angular.module('codexen.states.cards', ['ui.router'])
+angular.module('codexen.states.decks', ['ui.router'])
+angular.module('codexen.states.tags', ['ui.router'])
+angular.module('codexen.states.explore', ['ui.router'])
 
-    // Error states
-    angular.module('codexen.states.notfound', ['ui.router']);
+// Error states
+angular.module('codexen.states.notfound', ['ui.router'])
 
-    // Directives
-    angular.module('codexen.directives', [
-        'codexen.directives.top-nav',
-        'codexen.directives.signin-form',
-        'codexen.directives.card-viewer',
-        'codexen.directives.btn-fork-card',
-        'codexen.directives.btn-mobilize-card',
-        'codexen.directives.btn-edit-card',
-        'codexen.directives.btn-delete-card',
-        'codexen.directives.btn-follow-user'
-    ]);
-    angular.module('codexen.directives.top-nav', ['codexen.core.auth']);
-    angular.module('codexen.directives.signin-form', ['codexen.core.auth', 'ui.router']);
-    angular.module('codexen.directives.card-viewer', []);
-    angular.module('codexen.directives.btn-fork-card', ['codexen.services.cards', 'ui.bootstrap', 'ui.codemirror']);
-    angular.module('codexen.directives.btn-mobilize-card', []);
-    angular.module('codexen.directives.btn-edit-card', ['ui.router']);
-    angular.module('codexen.directives.btn-delete-card', ['codexen.services.cards', 'ui.bootstrap', 'ui.codemirror']);
-    angular.module('codexen.directives.btn-follow-user', ['codexen.services.users', 'ui.bootstrap']);
+// Directives
+angular.module('codexen.directives', [])
 
 
-    // Services
-    angular.module('codexen.services', [
-        'codexen.services.users',
-        'codexen.services.cards',
-        'codexen.services.tags',
-        'codexen.services.decks',
-        'codexen.services.request-invitation'
-    ]);
-    angular.module('codexen.services.users', ['codexen.core.config', 'codexen.core.auth']);
-    angular.module('codexen.services.cards', ['codexen.core.config']);
-    angular.module('codexen.services.tags', ['codexen.core.config']);
-    angular.module('codexen.services.decks', ['codexen.core.config']);
-    angular.module('codexen.services.request-invitation', []);
+// Services
+angular.module('codexen.services', ['codexen.core.config', 'codexen.core.auth'])
 
-    // Etc
-    angular.module('templates', []);
+// Etc
+angular.module('templates', [])
 
 </script>
 <% scripts.forEach(function(script){%>
 <script src="<%=script%>" charset="utf-8"></script>
-<% });%>
+<% })%>
+<% if(env=='dist') { %>
 <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-50038801-3', 'auto');
-
-    // check core/init.js
-    // ga('send', 'pageview');
+ga('create', 'UA-50038801-3', 'auto');
 
 </script>
+<% } %>
 </body>
 </html>

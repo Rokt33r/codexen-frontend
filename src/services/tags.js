@@ -1,42 +1,41 @@
-angular.module('codexen.services.tags')
-    .factory('Tag', function(Config, $http){
+/* global angular */
+angular.module('codexen.services')
+  .factory('Tag', function (apiUrl, $http) {
+    var index = function (search, limit) {
+      var url = apiUrl + 'tags'
 
-        var index = function(search, limit){
+      var params = {}
 
-            var url = Config.rootUrl + 'tags';
+      if (angular.isString(search)) params.search = search
+      params.limit = limit
 
-            var params = {};
+      return $http.get(url, {params: params})
+    }
 
-            if(angular.isString(search)) params.search = search;
-            params.limit = limit;
+    var show = function (tag_name) {
+      var url = apiUrl + 'tags/' + tag_name
 
-            return $http.get(url, {params:params});
-        };
+      return $http.get(url)
+    }
 
-        var show = function(tag_name){
-            var url = Config.rootUrl + 'tags/' + tag_name;
+    var cards = function (tag_name, page) {
+      var url = apiUrl + 'tags/' + tag_name + '/cards'
 
-            return $http.get(url);
-        };
+      if (!page) page = 1
 
-        var cards = function(tag_name, page){
-            var url = Config.rootUrl + 'tags/' + tag_name + '/cards';
+      var params = {
+        page: page
+      }
 
-            if(!page) page = 1;
+      return $http.get(url, {
+        params: params
+      })
+    }
 
-            var params = {
-                page:page
-            };
+    return {
+      index: index,
+      show: show,
+      cards: cards
+    }
 
-            return $http.get(url, {
-                params:params
-            });
-        };
-
-        return {
-            index:index,
-            show:show,
-            cards:cards
-        };
-
-    });
+  })
