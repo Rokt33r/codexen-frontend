@@ -46,6 +46,11 @@ gulp.task('vendor', function () {
     .pipe(gulp.dest(build_path + '/vendor'))
 })
 
+gulp.task('resources', function(){
+  return gulp.src('resources/**/*')
+    .pipe(gulp.dest(build_path + '/resources'))
+})
+
 gulp.task('index', function () {
   var files = globby.sync([build_path + '/**/*', '!' + build_path + '/vendor/**/*'])
 
@@ -70,7 +75,7 @@ gulp.task('index', function () {
 })
 
 gulp.task('build', function (cb) {
-  runSequence(['js', 'sass', 'tpls', 'vendor'], 'index', cb)
+  runSequence(['js', 'sass', 'tpls', 'vendor', 'resources'], 'index', cb)
 })
 
 gulp.task('watch', function (cb) {
@@ -116,6 +121,11 @@ gulp.task('build-dist', function () {
   return merge(js, css, vendor)
 })
 
+gulp.task('resources-dist', function(){
+  return gulp.src('resources')
+    .pipe(gulp.dest(dist_path + '/resources'))
+})
+
 gulp.task('index-dist', function () {
   var files = globby.sync([dist_path + '/**/*', '!' + dist_path + '/vendor/**/*'])
 
@@ -140,5 +150,5 @@ gulp.task('index-dist', function () {
 })
 
 gulp.task('dist', function (cb) {
-  runSequence('del-dist', 'build-dist', 'index-dist', cb)
+  runSequence('del-dist', ['build-dist', 'resources-dist'], 'index-dist', cb)
 })
