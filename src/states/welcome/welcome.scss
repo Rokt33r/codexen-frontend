@@ -1,35 +1,109 @@
+@import "../../mixins";
+
 .welcome-state{
     .first-section{
-        background-color:#394A55;
-        color: white;
-        padding: 50px 0;
-    }
+        background: url('resources/landing-top-bg.jpg') no-repeat center center fixed;
+        background-size: cover;
+        padding: 20px 0;
 
-    .catch{
-        font-weight: 100;
-    }
+        .catch{
+            color: white;
+            text-align: center;
 
-    .signnin{
-        padding: 30px 0;
+            padding: 60px 0 60px;
+
+            h1{
+                line-height: 1.4em;
+                font-size: 3.0em;
+                margin-bottom: 20px;
+            }
+        }
+        .comming-soon{
+            margin: 30px 0 50px;
+            color: white;
+            font-size: 1.2em;
+        }
     }
 
     .second-section{
         padding: 50px 0;
+
+        h2,h3{
+            margin: 20px 0;
+            color:#33ACE0;
+        }
     }
 
     .third-section{
-
+        background-color:#F2F2F2;
         padding: 50px 0;
-        color: white;
-        text-align: center;
-        background-color:#327A90;
+        h2{
+            margin: 10px 0;
+            color:#33ACE0;
+        }
+        iframe{
+            margin: 20px auto;
+        }
+    }
 
-        a{
-            color: white;
-            font-weight: 300;
+    .forth-section{
+        background-color: #2D3E4F;
+        padding: 20px 0;
+
+        h2{
+            margin: 30px 0;
+            color:white;
         }
 
+        .social-icons{
+            margin: 30px 0;
+            font-size: 3em;
+            .twitter-icon{
+                color: #55ACEE;
+                &:hover{
+                    color: lighten(#55ACEE, 15%);
+                }
+            }
+            .facebook-icon{
+                color: #3D5B97;
+                &:hover{
+                    color: lighten(#3D5B97, 15%);
+                }
+            }
+            .github-icon{
+                color: #333333;
+                &:hover{
+                    color: lighten(#333333, 15%);
+                }
+            }
+
+        }
     }
+
+    .fifth-section{
+        background: url('resources/landing-bottom-bg.jpg') no-repeat center center fixed;
+        background-size: cover;
+        padding: 20px 0;
+
+        color: white;
+
+        .catch {
+            margin: 30px 0;
+            font-weight: 300;
+            font-style: italic;
+            font-size: 1.5em;
+        }
+        .description{
+            margin: 30px 0;
+            font-weight: 300;
+            font-size: 1.3em;
+            line-height: 1.6em;
+        }
+        .comming-soon{
+            margin: 50px 0;
+        }
+    }
+
     .copyright{
         background-color:#394A55;
         color: white;

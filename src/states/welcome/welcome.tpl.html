@@ -2,12 +2,15 @@
     <section class="first-section">
         <div class="container">
             <div class="row ">
-                <div class="col-sm-6 col-md-5 col-md-offset-1 col-lg-4 col-lg-offset-2 catch">
-                    <h1>Welcome to CodeXen</h1>
-                    <p>Short-code storage service with CLI</p>
+                <div class="col-xs-10 col-md-8 col-xs-offset-1 col-md-offset-2 catch">
+                    <h1>The Coolest Way To Code</h1>
+                    <h2>Short-code storage service with CLI</h2>
                 </div>
-                <div class="col-sm-6 col-md-5 col-lg-4 signin">
-                    <signin-form></signin-form>
+                <div class="col-sm-10 col-sm-offset-1 text-center">
+                    <button class="btn btn-lg btn-wire-white center-block">
+                        <strong>Sign Up</strong> or <strong>Log In</strong>
+                    </button>
+                    <p class="comming-soon">CodeXen will be released officialy next hottest Summer!!</p>
                 </div>
             </div>
         </div>
@@ -16,29 +19,39 @@
     <section class="second-section">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6 col-sm-offset-3 request-key" id="request-key">
-
-                    <h2>Request Beta Invitation</h2>
-                    <p>CodeXen is on <strong>closed release</strong> now. You need an activation to sign up.</p>
-
-                    <form ng-submit="vm.sendRequest()">
-                        <p class="alert alert-danger" ng-if="vm.requestError" ng-bind="vm.requestError"></p>
-                        <p class="alert alert-success" ng-if="vm.requestSuccess" ng-bind="vm.requestSuccess"></p>
-
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input ng-model="vm.requestEmail" class="form-control" name="email" type="text" value="" id="email">
+                <div class="col-xs-10 col-md-8 col-xs-offset-1 col-md-offset-2">
+                    <h2 class="text-center">How to Use</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-10 col-xs-offset-1">
+                    <div class="row how-to">
+                        <div class="col-sm-4 text-center">
+                            <img class="center-block" width="150" height="150" src="resources/landing-cloud.svg" alt="Cloud"/>
+                            <h3>SAVE</h3>
+                            <p>
+                                You can use the ONLINE stroage which can save short-code and snippet. This storage could be accessed anytime and anywhere.
+                            </p>
                         </div>
-
-                        <div class="form-group">
-                            <button class="btn btn-primary form-control">Request</button>
+                        <div class="col-sm-4 text-center">
+                            <img class="center-block" width="150" height="150" src="resources/landing-cli.svg" alt="Command line interface"/>
+                            <h3>COMMAND</h3>
+                            <p>
+                                CodeXen offer you an original CLI Tool to fetch your codes.<br/>
+                                You can generate or run it directly with your *Fully Customized Command*.
+                            </p>
                         </div>
+                        <div class="col-sm-4 text-center">
+                            <img class="center-block" width="150" height="150" src="resources/landing-share.svg" alt="Share"/>
+                            <h3>SHARE</h3>
+                            <p>
 
-                    </form>
+                                “Fork” every code which other users uploaded with a single click.<br/>
+                                You can explore and discover great code written by users all over the world.
+                            </p>
+                        </div>
+                    </div>
 
-                    <blockquote>
-                        Invitation will be sent in 1~10 days.
-                    </blockquote>
                 </div>
             </div>
         </div>
@@ -48,11 +61,56 @@
     <section class="third-section">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6 col-sm-offset-3 about-us">
-                    <h2>Contact Us</h2>
-                    <h3>
-                        <a href="http://maisin.co/">MAISIN&amp;CO.,Inc</a>
-                    </h3><a href="mailto:info@maisin.co">&gt;&gt; info@maisin.co</a>
+                <div class="col-xs-10 col-xs-offset-1 text-center">
+                    <h2>DEMO</h2>
+
+                    <iframe class="center-block" style="width:100%;max-width:306px;" width="306" height="210" src="https://www.youtube.com/embed/9FSaKz4srh0" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="forth-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-10 col-md-8 col-xs-offset-1 col-md-offset-2 text-center">
+                    <h2>JOIN OUR COMMUNITY</h2>
+                    <div class="row social-icons">
+                        <div class="col-sm-4">
+                            <a class="fa-stack fa-lg twitter-icon">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </a>
+                        </div>
+                        <div class="col-sm-4">
+                            <a class="fa-stack fa-lg facebook-icon">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </a>
+                        </div>
+                        <div class="col-sm-4">
+                            <a class="fa-stack fa-lg github-icon">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="fifth-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-10 col-md-8 col-xs-offset-1 col-md-offset-2 text-center">
+                    <img width="150" height="150" class="center-block" src="resources/logo.svg" alt="logo"/>
+                    <h2>CodeXen</h2>
+                    <h3 class="catch">Our vision is “Beyond the era”.</h3>
+                    <p class="description">
+                        CodeXen make programming more efficiency and programmer more creative. We develop something people have never seen and make new concepts.
+                    </p>
+                    <p class="comming-soon">CodeXen will be released officialy next hottest Summer!!</p>
                 </div>
             </div>
         </div>

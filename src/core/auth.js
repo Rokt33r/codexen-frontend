@@ -15,7 +15,7 @@ angular.module('codexen.core.auth')
       state = 'auth'
       $rootScope.$broadcast('StartAuthenticating')
 
-      var url = apiUrl + 'auth'
+      var url = apiUrl + 'auth/user'
 
       return $http.get(url).success(function (data) {
         console.log(data.user)
@@ -35,7 +35,7 @@ angular.module('codexen.core.auth')
     }
 
     var attempt = function (email, password, cbSuccess, cbError) {
-      var url = apiUrl + 'auth'
+      var url = apiUrl + 'auth/attempt'
 
       return $http.post(url, {
         email: email,

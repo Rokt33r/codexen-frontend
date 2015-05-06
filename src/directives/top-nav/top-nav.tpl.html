@@ -1,8 +1,11 @@
-<nav class="navbar navbar-default top-nav">
+<nav class="navbar navbar-inverse top-nav">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" ui-sref="welcome">
-                CodeXen <small>αlpha</small>
+              <img width="30" height="30" src="resources/logo.svg" alt="logo">
+              <span>
+                  CodeXen <small>β</small>
+              </span>
             </a>
             <button ng-click="vm.isCollapsed = !vm.isCollapsed" ng-init="isNavBarCollapsed=true" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
@@ -28,7 +31,7 @@
 
             <ul class="nav navbar-nav navbar-right" ng-hide="vm.currentUser">
                 <li>
-                    <a ui-sref="signin"><i class="fa fa-sign-in"></i> Sign in</a>
+                    <a ui-sref="signin"><i class="fa fa-sign-in"></i> Sign Up | Log In</a>
                 </li>
             </ul>
 
@@ -37,7 +40,7 @@
                 <li><a ui-sref="cards.create" class="top-nav-btn btn btn-primary"><i class="fa fa-plus-square-o"></i> New Code</a></li>
                 <li class="dropdown" dropdown >
 
-                    <a class="dropdown-toggle profile-photo" dropdown-toggle><img class="img-circle" ng-src="//www.gravatar.com/avatar/{{vm.currentUser.md5}}?s=35"><span class="visible-xs-inline"> {{vm.currentUser.name}}</span></a>
+                    <a class="dropdown-toggle profile-photo" dropdown-toggle><img width="35" height="35" class="img-circle" ng-src="//www.gravatar.com/avatar/{{vm.currentUser.md5}}?s=35"><span class="visible-xs-inline"> {{vm.currentUser.name}}</span></a>
 
                     <ul class="dropdown-menu" role="menu">
                         <li><a ui-sref="users.show({user_name:vm.currentUser.name})">My page</a></li>

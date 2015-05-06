@@ -1,16 +1,25 @@
-.top-nav{
-    .profile-photo{
-        padding: 7px 11px !important;
-    }
-    a.top-nav-btn.btn-primary{
-        padding: 6px 12px;
-        color: white;
-        margin-top: 7px;
-        width: 100%;
-        &:hover, &:active, &:focus{
-            background-color: #286090;
-            border-color: #204d74;
-            color: white;
+nav.top-nav{
+  margin: 0;
+  border-radius:0;
+    .navbar-brand{
+        img{
+            display: inline;
+            margin-top: -5px;
         }
     }
+  
+  .profile-photo{
+    padding: 7px 11px !important;
+  }
+  a.top-nav-btn.btn-primary{
+    padding: 6px 12px;
+    color: white;
+    margin-top: 7px;
+    width: 100%;
+    &:hover, &:active, &:focus{
+      background-color: #286090;
+      border-color: #204d74;
+      color: white;
+    }
+  }
 }

@@ -1,0 +1,32 @@
+/**
+* Overrides for custom bootstrap
+*/
+
+// Navbar 
+$navbar-inverse-bg: #2A3D4F;
+$navbar-inverse-color: white;
+
+$navbar-inverse-link-color: white;
+$navbar-inverse-link-hover-color: darken($navbar-inverse-link-color, 15%);
+
+// Button
+
+// btn-default
+$btn-default-bg: transparent;
+$btn-default-color: white;
+$btn-default-border: white;
+
+// Custom set
+$heading-color:#33ACE0;
+
+.btn.btn-wire-white{
+    color: white;
+    background: transparent;
+    border: solid 2px white;
+    transition:0.15s;
+    &:hover{
+        color: $heading-color;
+        background-color:white;
+    }
+}
+
