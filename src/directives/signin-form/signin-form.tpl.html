@@ -2,16 +2,16 @@
     <strong>Oops...</strong>
     <span ng-bind="error"></span>
 </div>
-<form ng-submit="signin()">
-    <div class="form-group">
-        <label for="email">E-mail</label>
-        <input ng-model="email" type="email" id="email" name="email" class="form-control"/>
+<form name="form" novalidate ng-submit="signin()">
+    <div class="form-group has-feedback">
+        <label for="email" class="sr-only">E-mail</label>
+        <input ng-model="email" name="email" id="email" required placeholder="E-mail Address" class="form-control input-underline" type="email"/>
+    </div>
+    <div class="form-group has-feedback">
+        <label for="password" class="sr-only">Password</label>
+        <input ng-model="password" name="password" id="password" required placeholder="Password" class="form-control input-underline" type="password"/>
     </div>
     <div class="form-group">
-        <label for="password">Password</label>
-        <input ng-model="password" type="password" id="password" name="password" class="form-control"/>
-    </div>
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary form-control">Sign In</button>
+        <button type="submit" class="btn btn-wire-blue center-block">Log In</button>
     </div>
 </form>

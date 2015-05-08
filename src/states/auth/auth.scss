@@ -1,0 +1,40 @@
+.auth-state{
+    background: url('resources/auth-bg.jpg') no-repeat center center;
+    background-size: cover;
+    min-height:600px;
+
+    h1{
+        margin: 50px 0 0;
+        color: white;
+    }
+    nav{
+        color: white;
+        margin: 30px;
+        line-height: 2em;
+        font-size: 1.5em;
+        a{
+            font-weight: 300;
+            color: lightgray;
+            padding: 10px;
+            transition: 0.1s;
+            border-radius: 5px;
+        }
+        a.active{
+            font-weight: bold;
+            color: white;
+        }
+    }
+    .panel.auth-panel{
+        max-width: 360px;
+        margin: 0 auto 60px;
+    }
+
+}
+
+.auth-signup-state, .auth-login-state{
+    padding: 20px;
+
+    .form-group:nth-last-child(1){
+        margin-bottom: 0;
+    }
+}

@@ -24,13 +24,13 @@ angular.module('codexen.core.auth')
 
         $rootScope.$broadcast('EndAuthenticating', currentUser)
         angular.isFunction(cbSuccess) ? cbSuccess(data) : null
-      }).error(function (data) {
+      }).error(function (data, status) {
         console.log(data.error)
         currentUser = null
         state = 'guest'
 
         $rootScope.$broadcast('EndAuthenticating', null)
-        angular.isFunction(cbError) ? cbError(data) : null
+        angular.isFunction(cbError) ? cbError(data, status) : null
       })
     }
 
@@ -48,7 +48,27 @@ angular.module('codexen.core.auth')
         })
         .error(function (data, status) {
           console.log('Error occurs :' + status)
-          angular.isFunction(cbError) ? cbError(data) : null
+          angular.isFunction(cbError) ? cbError(data, status) : null
+        })
+    }
+
+    var register = function (email, password, name, profile_name, cbSuccess, cbError){
+      var url = apiUrl + 'auth/register'
+
+      return $http.post(url, {
+        email:email,
+        password:password,
+        name:name,
+        profile_name:profile_name
+      })
+        .success(function (data) {
+          console.log('Success')
+          $window.localStorage.setItem('id_token', data.token)
+          authenticateToken(cbSuccess, cbError)
+        })
+        .error(function (data, status) {
+          console.log('Error occurs :' + status)
+          angular.isFunction(cbError) ? cbError(data, status) : null
         })
     }
 
@@ -89,6 +109,7 @@ angular.module('codexen.core.auth')
     return {
       authenticateToken: authenticateToken,
       attempt: attempt,
+      register: register,
       signOut: signOut,
       getAuthState: function () {
         return state

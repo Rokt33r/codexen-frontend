@@ -1,0 +1,24 @@
+<div ng-show="error" class="alert alert-danger">
+    <strong>Oops...</strong>
+    <span ng-bind="error"></span>
+</div>
+<form name="form" ng-submit="register()">
+    <div class="form-group">
+        <input ng-model="email" required placeholder="E-mail Address" id="signup-email" class="form-control input-underline" type="email"/>
+    </div>
+    <div class="form-group">
+        <input ng-model="name" required placeholder="Username" id="signup-username" class="form-control input-underline" type="text"/>
+    </div>
+    <div class="form-group">
+        <input ng-model="password" required placeholder="Password" id="signup-password" class="form-control input-underline" type="password"/>
+    </div>
+    <div class="form-group">
+        <input ng-model="password_confirm" password-verify="password" required placeholder="Password(Confirm)" id="signup-password-confirm" class="form-control input-underline" type="password"/>
+    </div>
+    <div class="form-group">
+        <input ng-model="profile_name" placeholder="Profile name(Optional)" id="signup-profile-name" class="form-control input-underline" type="text"/>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-wire-blue center-block">Register</button>
+    </div>
+</form>

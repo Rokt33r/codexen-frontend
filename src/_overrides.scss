@@ -1,3 +1,4 @@
+@import "mixins";
 /**
 * Overrides for custom bootstrap
 */
@@ -19,14 +20,98 @@ $btn-default-border: white;
 // Custom set
 $heading-color:#33ACE0;
 
+@mixin wire($color, $bg){
+
+    &:hover,
+    .hover{
+        color: $bg;
+        background-color:$color;
+    }
+    &:focus,
+    &.focus {
+        color: $color;
+        box-shadow: 0 0 4px $color;
+        text-decoration: none;
+        outline: none;
+        &:hover,
+        &.hover {
+            color: $bg;
+        }
+    }
+
+    &:active,
+    &.active{
+        opacity: 0.7;
+        box-shadow: none;
+        color: $color;
+        outline: none;
+        &:focus,
+        &.focus {
+            color: $color;
+            outline: none;
+            box-shadow: 0 0 4px $color;
+        }
+
+        &:hover,
+        &.hover {
+            color: $bg;
+            background-color:$color;
+            outline: none;
+        }
+    }
+
+    &.disabled,
+    &[disabled],
+    fieldset[disabled] & {
+        cursor: not-allowed;
+        pointer-events: none;
+        opacity: 0.65;
+        box-shadow: none;
+    }
+
+}
+
 .btn.btn-wire-white{
     color: white;
     background: transparent;
     border: solid 2px white;
-    transition:0.15s;
-    &:hover{
-        color: $heading-color;
-        background-color:white;
+    transition:0.1s;
+
+    @include wire(white, $heading-color);
+}
+
+.btn.btn-wire-blue{
+    color: $heading-color;
+    background: transparent;
+    border: solid 2px $heading-color;
+    transition:0.1s;
+
+    @include wire($heading-color, white);
+}
+
+input.form-control.input-underline{
+    box-shadow: none;
+    border-radius: 0;
+    border-bottom: 1px solid lightgrey;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    &:focus{
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 1);
+    }
+    &.ng-invalid.ng-dirty{
+        border-bottom-color: rgba(255,0,0,0.5);
+        border-bottom-width: 2px;
+    }
+    &.ng-valid.ng-dirty{
+        border-bottom-color: rgba(0,120,0,0.5);
+        border-bottom-width: 2px;
     }
 }
 
+.feedback-success{
+    color: rgba(0,120,0,0.5);
+}
+.feedback-danger{
+    color: rgba(255,0,0,0.5);
+}

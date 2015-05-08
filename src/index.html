@@ -51,8 +51,16 @@
 </head>
 <body>
 
+<div id="wrap">
 <top-nav></top-nav>
 <div ui-view id="main-view"></div>
+
+<footer>
+    <p class="copyright">© 2015 MAISIN&CO.,Inc.</p>
+</footer>
+
+</div>
+
 <script src="vendor/lodash.js"></script>
 <script src="vendor/codemirror.js"></script>
 <script src="vendor/angular.js"></script>
@@ -94,22 +102,24 @@ angular.module('codexen.core.auth', ['ui.router', 'codexen.core.config'])
 angular.module('codexen.states', [
   'codexen.states.home',
   'codexen.states.welcome',
-  'codexen.states.signin',
+  'codexen.states.signin', // todo:need to delete later
   'codexen.states.notfound',
   'codexen.states.users',
   'codexen.states.cards',
   'codexen.states.decks',
   'codexen.states.tags',
   'codexen.states.explore',
+  'codexen.states.auth'
 ])
 angular.module('codexen.states.home', ['ui.router'])
 angular.module('codexen.states.welcome', ['ui.router'])
-angular.module('codexen.states.signin', ['ui.router', 'codexen.core.auth'])
+angular.module('codexen.states.signin', ['ui.router', 'codexen.core.auth']) // todo:need to delete later
 angular.module('codexen.states.users', ['ui.router'])
 angular.module('codexen.states.cards', ['ui.router'])
 angular.module('codexen.states.decks', ['ui.router'])
 angular.module('codexen.states.tags', ['ui.router'])
 angular.module('codexen.states.explore', ['ui.router'])
+angular.module('codexen.states.auth', ['ui.router', 'codexen.core.auth'])
 
 // Error states
 angular.module('codexen.states.notfound', ['ui.router'])

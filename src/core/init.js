@@ -33,7 +33,7 @@ angular.module('codexen.core.init')
           case 'init':
             console.log('redirect signin')
             Auth.setPendingState(toState.name, toParams)
-            go('signin')
+            go('auth.signin')
             return
         }
       }
@@ -50,7 +50,7 @@ angular.module('codexen.core.init')
     })
 
     $rootScope.$on('$stateChangeSuccess', function (event, toState) {
-      if (Auth.hasPendingState() && toState.name !== 'signin') Auth.releasePendingState()
+      if (Auth.hasPendingState() && toState.name !== 'auth.signin') Auth.releasePendingState()
 
       // for analytics
       if ($window.ga != null) $window.ga('send', 'pageview', { page: $location.path() })
