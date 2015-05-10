@@ -51,6 +51,18 @@ angular.module('codexen.services')
       return $http.post(url, params)
     }
 
+    var star = function(fileId){
+      var url = apiUrl + 'files/' + fileId + '/star'
+
+      return $http.post(url)
+    }
+
+    var unstar = function(fileId){
+      var url = apiUrl + 'files/' + fileId + '/unstar'
+
+      return $http.post(url)
+    }
+
     return {
       index: index,
       store: store,
@@ -58,6 +70,8 @@ angular.module('codexen.services')
       update: update,
       destroy: destroy,
       fork: fork,
-      mobilize: mobilize
+      mobilize: mobilize,
+      star:star,
+      unstar:unstar
     }
   })

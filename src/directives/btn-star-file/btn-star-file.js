@@ -8,9 +8,55 @@ angular.module('codexen.directives')
         file: '=btnStarFile'
       },
       link: function (scope, element) {
-        scope.btnLabel = 'Star'
-        var isStarred = false
-        scope.newFile = null
+        var setUp = function(){
+          element.attr('disabled', null)
+
+          if(scope.file.is_starred){
+            scope.btnLabel = 'Unstar'
+
+            element.one('click', function(){
+              element.attr('disabled', 'disabled')
+
+              scope.btnLabel = 'Unstarring...'
+
+              File.unstar(scope.file.id)
+                .success(function (data, status) {
+                  scope.file.star_count = data.file.star_count
+                  scope.file.is_starred = data.file.is_starred
+                  setUp();
+                })
+                .error(function (data, status) {
+                  console.log('Error! : ', status)
+                  console.log(data);
+
+                  setUp();
+                })
+            })
+          }else{
+            scope.btnLabel = 'Star'
+
+            element.one('click', function(){
+              element.attr('disabled', 'disabled')
+
+              scope.btnLabel = 'Starring...'
+
+              File.star(scope.file.id)
+                .success(function (data, status) {
+                  scope.file.star_count = data.file.star_count
+                  scope.file.is_starred = data.file.is_starred
+                  setUp();
+                })
+                .error(function (data, status) {
+                  console.log('Error! : ', status)
+                  console.log(data);
+
+                  setUp();
+                })
+            })
+          }
+        }
+
+        setUp();
       }
     }
   })
