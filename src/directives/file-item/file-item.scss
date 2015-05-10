@@ -1,0 +1,37 @@
+@import "../../mixins";
+
+file-item{
+    header{
+        @include clearfix;
+        .file-name{
+            font-size: 1.2em;
+        }
+        .file-owner{
+            text-align: right;
+            position: relative;
+            top: 3px;
+        }
+    }
+    .file-control{
+        text-align: right;
+        position: relative;
+        top: -20px;
+        margin-top: -20px;
+    }
+
+    .tags{
+        @include clearfix;
+        margin: 2px 0;
+        list-style: none;
+        padding: 0;
+        li{
+            float: left;
+            padding: 0 2px;
+        }
+    }
+
+    hr{
+        margin-top: 0;
+    }
+
+}

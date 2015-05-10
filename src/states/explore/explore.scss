@@ -1,3 +1,5 @@
+@import "../../overrides";
+
 .explore-tab{
     width: 100%;
     text-align: center;
@@ -5,5 +7,43 @@
     button.btn{
         display: inline-block;
         float: none;
+    }
+}
+
+.explore-state{
+    background-color: white;
+    nav{
+        margin-top: 30px;
+        border-bottom: solid 1px lightgrey;
+        margin-bottom: 30px;
+        .nav{
+            li{
+                position: relative;
+                top: 1px;
+                font-size: 1.2em;
+                float: left;
+                border-bottom: solid 2px transparent;
+                a{
+                    color: lightgrey;
+                }
+            }
+            li.active{
+                border-bottom: solid 3px $heading-color;
+                a{
+                    color: $heading-color;
+                }
+            }
+        }
+    }
+
+    .file-list{
+        padding: 0 15px;
+        list-style: none;
+    }
+
+    .explore-aside{
+        h2{
+            font-size: 1.3em;
+        }
     }
 }

@@ -1,0 +1,25 @@
+<header class="row">
+
+    <div class="file-name col-sm-8"><a ui-sref="files.show({file_id:file.id})" ng-bind="file.name"></a></div>
+
+    <div class="file-owner col-sm-4"><a ui-sref="users.show({user_name:file.owner.name})" ng-bind-html="' <img src=\'//www.gravatar.com/avatar/'+  file.owner.md5+'?s=20\' class=\'img-circle\'> ' + file.owner.name"></a></div>
+
+</header>
+
+<section class="row">
+
+    <div class="file-detail col-sm-8">
+        <ul class="tags"><li ng-repeat="tag in file.tags"><a ui-sref="tags.show({tag_name:tag.name})" ng-bind="tag.name" class="label label-default"></a></li></ul>
+
+        <p ng-bind="file.description"></p>
+    </div>
+</section>
+<section class="file-control row">
+
+    <div class="col-sm-4 col-sm-offset-8">
+        <button btn-star-file="file" class="btn btn-xs btn-wire-gray"></button>
+        <button btn-fork-file="file" class="btn btn-xs btn-wire-gray"></button>
+    </div>
+
+</section>
+<hr/>

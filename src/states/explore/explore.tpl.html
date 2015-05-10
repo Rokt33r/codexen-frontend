@@ -1,9 +1,47 @@
-<div class="explore-state container-fluid">
+<div class="explore-state">
+    <div class="container">
+        <div class="row">
 
-    <div class="explore-tab btn-group">
-        <button ui-sref="explore.tags" ui-sref-active="active" ng-class="{'btn-primary':('explore.tags'|isState),'btn-default':!('explore.tags'|isState)}" class="btn"><i class="fa fa-tags"></i> Tags</button><button ui-sref="explore.users" ui-sref-active="active" ng-class="{'btn-primary':('explore.users'|isState),'btn-default':!('explore.users'|isState)}" class="btn"><i class="fa fa-users"></i> Users</button>
+            <section class="col-sm-9">
+                <nav>
+                    <ul class="nav nav-underbar">
+                        <li ui-sref-active="active">
+                            <a ui-sref="explore.files">Codes</a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="explore.users">Users</a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="explore.tags">Tags</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div ui-view></div>
+            </section>
+
+            <aside class="col-sm-3 explore-aside">
+                <div>
+                    <h2>Follow your friend</h2>
+                    <ul>
+                        <li>Friend1</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2>Who to follow</h2>
+                    <ul>
+                        <li>user1</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2>Tags</h2>
+                    <ul>
+                        <li>some tags</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
     </div>
-
-    <ui-view></ui-view>
-
 </div>
