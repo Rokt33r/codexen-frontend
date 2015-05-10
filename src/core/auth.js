@@ -52,14 +52,14 @@ angular.module('codexen.core.auth')
         })
     }
 
-    var register = function (email, password, name, profile_name, cbSuccess, cbError){
+    var register = function (email, password, name, profile_name, cbSuccess, cbError) {
       var url = apiUrl + 'auth/register'
 
       return $http.post(url, {
-        email:email,
-        password:password,
-        name:name,
-        profile_name:profile_name
+        email: email,
+        password: password,
+        name: name,
+        profile_name: profile_name
       })
         .success(function (data) {
           console.log('Success')

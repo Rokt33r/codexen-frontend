@@ -8,13 +8,13 @@ angular.module('codexen.directives')
         file: '=btnStarFile'
       },
       link: function (scope, element) {
-        var setUp = function(){
+        var setUp = function () {
           element.attr('disabled', null)
 
-          if(scope.file.is_starred){
+          if (scope.file.is_starred) {
             scope.btnLabel = 'Unstar'
 
-            element.one('click', function(){
+            element.one('click', function () {
               element.attr('disabled', 'disabled')
 
               scope.btnLabel = 'Unstarring...'
@@ -23,19 +23,19 @@ angular.module('codexen.directives')
                 .success(function (data, status) {
                   scope.file.star_count = data.file.star_count
                   scope.file.is_starred = data.file.is_starred
-                  setUp();
+                  setUp()
                 })
                 .error(function (data, status) {
                   console.log('Error! : ', status)
-                  console.log(data);
+                  console.log(data)
 
-                  setUp();
+                  setUp()
                 })
             })
-          }else{
+          } else {
             scope.btnLabel = 'Star'
 
-            element.one('click', function(){
+            element.one('click', function () {
               element.attr('disabled', 'disabled')
 
               scope.btnLabel = 'Starring...'
@@ -44,19 +44,19 @@ angular.module('codexen.directives')
                 .success(function (data, status) {
                   scope.file.star_count = data.file.star_count
                   scope.file.is_starred = data.file.is_starred
-                  setUp();
+                  setUp()
                 })
                 .error(function (data, status) {
                   console.log('Error! : ', status)
-                  console.log(data);
+                  console.log(data)
 
-                  setUp();
+                  setUp()
                 })
             })
           }
         }
 
-        setUp();
+        setUp()
       }
     }
   })

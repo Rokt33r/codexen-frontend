@@ -10,7 +10,7 @@ angular.module('codexen.directives')
           scope.form.password.$setDirty()
           scope.error = null
 
-          if(scope.form.$invalid) {
+          if (scope.form.$invalid) {
             scope.error = 'Invalid Form'
             return
           }
@@ -27,7 +27,7 @@ angular.module('codexen.directives')
             $state.go('home')
 
           }, function (data, status) {
-            switch(status){
+            switch (status) {
               case 401:
                 scope.error = 'Invalid Credentials'
                 scope.password = ''

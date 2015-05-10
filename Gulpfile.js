@@ -46,7 +46,7 @@ gulp.task('vendor', function () {
     .pipe(gulp.dest(build_path + '/vendor'))
 })
 
-gulp.task('resources', function(){
+gulp.task('resources', function () {
   return gulp.src('resources/**/*')
     .pipe(gulp.dest(build_path + '/resources'))
 })
@@ -121,7 +121,7 @@ gulp.task('build-dist', function () {
   return merge(js, css, vendor)
 })
 
-gulp.task('resources-dist', function(){
+gulp.task('resources-dist', function () {
   return gulp.src('resources')
     .pipe(gulp.dest(dist_path + '/resources'))
 })

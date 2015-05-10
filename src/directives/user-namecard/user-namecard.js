@@ -1,13 +1,11 @@
 /* global angular */
 angular.module('codexen.directives')
-  .directive('userNamecard', function(){
+  .directive('userNamecard', function () {
     return {
-      scope:{
-        user:'='
+      scope: {
+        user: '='
       },
-      templateUrl:'directives/user-namecard/user-namecard.tpl.html',
-      link: function (scope, el, attr) {
-
-      }
+      templateUrl: 'directives/user-namecard/user-namecard.tpl.html',
+      link: function (scope, el, attr) {}
     }
   })

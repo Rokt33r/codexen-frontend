@@ -8,19 +8,19 @@ angular.module('codexen.directives')
         scope.register = function () {
           console.log('reg fired')
           if (scope.password !== scope.password_confirm) {
-            scope.error = 'Password doesn\'t match confirmation.'
+            scope.error = "Password doesn't match confirmation."
             return
           }
 
-          Auth.register(scope.email, scope.password, scope.name, scope.profile_name, function(){
+          Auth.register(scope.email, scope.password, scope.name, scope.profile_name, function () {
             if (Auth.hasPendingState()) {
               var pending = Auth.releasePendingState()
               $state.go(pending.state, pending.params)
               return
             }
             $state.go('home')
-          }, function(data, status){
-            if(status === 422){
+          }, function (data, status) {
+            if (status === 422) {
               scope.error = 'Invalid Request'
               return
             }

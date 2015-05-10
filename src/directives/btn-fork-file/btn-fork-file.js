@@ -22,7 +22,7 @@ angular.module('codexen.directives')
             },
             controller: function ($modalInstance, file, $scope) {
               $scope.file = file
-              console.log(file);
+              console.log(file)
 
               $scope.edit = function () {
                 $state.go('files.edit', {file_id: file.id})
@@ -55,12 +55,12 @@ angular.module('codexen.directives')
               })
             }
           }).result.then(function (result) {
-              if (result.type === 'undo') {
-                scope.btnLabel = 'Fork'
-                scope.newFile = null
-                isForked = false
-              }
-            })
+            if (result.type === 'undo') {
+              scope.btnLabel = 'Fork'
+              scope.newFile = null
+              isForked = false
+            }
+          })
         }
 
         element.on('click', function () {

@@ -10,7 +10,7 @@ angular.module('codexen.states.explore')
       }
     })
   })
-  .controller('ExploreTagsController', function(Tag, $timeout, $scope){
+  .controller('ExploreTagsController', function (Tag, $timeout, $scope) {
     var vm = this
 
     //    var watchers

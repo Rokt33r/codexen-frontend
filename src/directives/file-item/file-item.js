@@ -2,7 +2,7 @@
 angular.module('codexen.directives')
   .directive('fileItem', function (Auth) {
     return {
-      restrict:'E',
+      restrict: 'E',
       templateUrl: 'directives/file-item/file-item.tpl.html',
       scope: {
         file: '='
