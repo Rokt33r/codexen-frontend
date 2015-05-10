@@ -12,10 +12,10 @@
 
 .explore-state{
     background-color: white;
-    nav{
-        margin-top: 30px;
+    nav.explore-tabs{
+        margin-top: 20px;
         border-bottom: solid 1px lightgrey;
-        margin-bottom: 30px;
+        margin-bottom: 10px;
         .nav{
             li{
                 position: relative;
@@ -36,14 +36,46 @@
         }
     }
 
+    .explore-aside{
+        h2{
+            font-size: 1.3em;
+        }
+    }
+}
+
+.explore-files-state{
     .file-list{
         padding: 0 15px;
         list-style: none;
     }
+    .files-nav{
+        @include clearfix;
+        ul li{
+            float: left;
+            width: 70px;
+            margin: 10px 10px 15px;
+            a{
+                padding: 5px 0;
+            }
+        }
+    }
+}
 
-    .explore-aside{
-        h2{
-            font-size: 1.3em;
+.explore-tags-state{
+    .tag-list{
+        list-style: none;
+        padding: 0;
+        @include clearfix;
+
+        li{
+            margin: 4px;
+            float: left;
+            .label{
+                font-size: 0.9em;
+                &:hover{
+                    opacity: 0.6;
+                }
+            }
         }
     }
 }

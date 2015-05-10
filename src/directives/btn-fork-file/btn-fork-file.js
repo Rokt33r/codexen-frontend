@@ -22,6 +22,7 @@ angular.module('codexen.directives')
             },
             controller: function ($modalInstance, file, $scope) {
               $scope.file = file
+              console.log(file);
 
               $scope.edit = function () {
                 $state.go('files.edit', {file_id: file.id})
