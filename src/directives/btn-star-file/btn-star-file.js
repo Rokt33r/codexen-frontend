@@ -13,6 +13,7 @@ angular.module('codexen.directives')
 
           if (scope.file.is_starred) {
             scope.btnLabel = 'Starred'
+            element.addClass('active')
 
             element.one('click', function () {
               element.attr('disabled', 'disabled')
@@ -34,6 +35,7 @@ angular.module('codexen.directives')
             })
           } else {
             scope.btnLabel = 'Star'
+            element.removeClass('active')
 
             element.one('click', function () {
               element.attr('disabled', 'disabled')

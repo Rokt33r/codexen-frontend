@@ -21,7 +21,7 @@ $btn-default-border: white;
 $heading-color:#33ACE0;
 $link-color:$heading-color;
 
-@mixin wire($color, $bg){
+@mixin wire($color, $bg, $hover-color: $color){
     color: $color;
     background: transparent;
     border: solid 1px $color;
@@ -31,7 +31,9 @@ $link-color:$heading-color;
     &:hover,
     .hover{
         color: $bg;
-        background-color:$color;
+        background-color:$hover-color;
+        border-color: $hover-color;
+        box-shadow: none;
     }
     &:focus,
     &.focus {
@@ -42,15 +44,17 @@ $link-color:$heading-color;
         &:hover,
         &.hover {
             color: $bg;
+            background-color:$hover-color;
         }
     }
 
     &:active,
     &.active{
-        opacity: 0.7;
         box-shadow: none;
-        color: $color;
+        color: $bg;
         outline: none;
+        background-color:$hover-color;
+        border-color: $hover-color;
         &:focus,
         &.focus {
             color: $color;
@@ -61,7 +65,7 @@ $link-color:$heading-color;
         &:hover,
         &.hover {
             color: $bg;
-            background-color:$color;
+            background-color:$hover-color;
             outline: none;
         }
     }
@@ -89,6 +93,12 @@ $link-color:$heading-color;
 
 .btn.btn-wire-gray{
     @include wire(gray, white);
+}
+.btn.btn-wire-gray-blue{
+    @include wire(gray, white, $heading-color);
+}
+.btn.btn-wire-red{
+    @include wire(#D75452, white);
 }
 
 input.form-control.input-underline{

@@ -1,4 +1,7 @@
 @import "bootstrap";
+body{
+    background-color: #394A55;
+}
 body, label{
     font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
     font-weight:400 !important;
@@ -38,6 +41,8 @@ p.copyright{
 }
 
 #main-view{
+    min-height:600px;
+    background-color:white;
 }
 .copyright{
     background-color:#394A55;
