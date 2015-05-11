@@ -1,8 +1,8 @@
 <div class="explore-state">
     <div class="container">
         <div class="row">
-
-            <section class="col-sm-9">
+{{include('explore.tag')}}
+            <section ng-class="{'col-sm-12':includes('explore.tags'),'col-sm-9':!includes('explore.tags')}">
                 <nav class="explore-tabs">
                     <ul class="nav nav-underbar">
                         <li ui-sref-active="active">
@@ -20,7 +20,7 @@
                 <div ui-view></div>
             </section>
 
-            <aside class="col-sm-3 explore-aside">
+            <aside ng-if="!includes('explore.tags')" class="col-sm-3 explore-aside">
                 <div>
                     <h2>Follow your friend</h2>
                     <ul>

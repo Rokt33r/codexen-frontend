@@ -12,7 +12,7 @@ angular.module('codexen.directives')
           element.attr('disabled', null)
 
           if (scope.file.is_starred) {
-            scope.btnLabel = 'Unstar'
+            scope.btnLabel = 'Starred'
 
             element.one('click', function () {
               element.attr('disabled', 'disabled')

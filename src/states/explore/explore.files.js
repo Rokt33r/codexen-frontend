@@ -36,6 +36,7 @@ angular.module('codexen.states.explore')
     }).error(function (data, status) {
       console.log('Error !! ', status)
       console.log('data : ', data)
+      if(status == 0) return
 
       $state.go('notfound')
     })
