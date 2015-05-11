@@ -102,23 +102,23 @@ angular.module('codexen.core.auth', ['ui.router', 'codexen.core.config'])
 angular.module('codexen.states', [
   'codexen.states.home',
   'codexen.states.welcome',
-  'codexen.states.signin', // todo:need to delete later
   'codexen.states.notfound',
   'codexen.states.users',
   'codexen.states.cards',
   'codexen.states.decks',
   'codexen.states.tags',
   'codexen.states.explore',
+  'codexen.states.files',
   'codexen.states.auth'
 ])
 angular.module('codexen.states.home', ['ui.router'])
 angular.module('codexen.states.welcome', ['ui.router'])
-angular.module('codexen.states.signin', ['ui.router', 'codexen.core.auth']) // todo:need to delete later
 angular.module('codexen.states.users', ['ui.router'])
 angular.module('codexen.states.cards', ['ui.router'])
 angular.module('codexen.states.decks', ['ui.router'])
 angular.module('codexen.states.tags', ['ui.router'])
 angular.module('codexen.states.explore', ['ui.router'])
+angular.module('codexen.states.files', ['ui.router'])
 angular.module('codexen.states.auth', ['ui.router', 'codexen.core.auth'])
 
 // Error states
