@@ -17,6 +17,7 @@ angular.module('codexen.states.files')
       .success(function(data, status){
         vm.file = data.file
         vm.isMine = Auth.getCurrentUser().id === data.file.owner.id
+        vm.isLoaded = true
         console.log(data)
       })
       .error(function(data, status){

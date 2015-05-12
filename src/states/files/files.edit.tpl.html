@@ -1,0 +1,59 @@
+<div class="files-show-state container-fluid">
+    <div class="col-sm-4 col-md-3">
+        <div class="owner">
+            <div class="form-group">
+                <h4>
+                    <small>Author</small>
+                    <br/>
+                    <img width="50" height="50" ng-src="//www.gravatar.com/avatar/{{vm.file.owner.md5}}?s=50" alt="owner_photo" class="img-circle"/>
+                    <span ng-bind="vm.file.owner.name"></span>
+                </h4>
+
+            </div>
+            <div class="form-group">
+                <h4><small>filename</small></h4>
+                <input ng-model="vm.file.name" class="form-control" type="text"/>
+                <h4><small>folder</small></h4>
+
+                <select ng-model="vm.targetFolder" ng-options="vm.file.owner.name + '/' + folder.name for folder in vm.folders.data" ng-disabled="!vm.foldersLoaded" name="folder" id="folder" class="form-control">
+                    <option ng-if="!vm.folders.data" value="">Loading...</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <h4><small>tags</small></h4>
+                <ul class="tags">
+                    <li ng-repeat="tag in vm.tags">
+                        <a ng-bind="tag" class="label label-default"></a>
+                    </li>
+                </ul>
+
+
+                <ui-select on-select="vm.checkTag($item, $model)" id="tags" multiple tagging tagging-label="false" tagging-tokens="SPACE|,|/" close-on-select="false" reset-search-input="true" ng-model="vm.tags" title="Choose a tag">
+
+                    <ui-select-match placeholder="Select tags...">{{$item}}</ui-select-match>
+                    <ui-select-choices repeat="tag in vm.searchedTags">
+                        {{tag}}
+                    </ui-select-choices>
+                </ui-select>
+
+            </div>
+            <div class="form-group">
+                <h4><small>description</small></h4>
+                <textarea ng-model="vm.file.description" name="description" id="description" class="form-control"></textarea>
+            </div>
+            <div class="form-group control-group">
+                <button ng-click="vm.save()" class="btn btn-wire-blue form-control"><i class="fa fa-save"></i> Save</button>
+                <button ui-sref="files.show({file_id:vm.file.id})" class="btn btn-wire-gray form-control"><i class="fa fa-close"></i> Cancel</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8 col-md-9">
+        <label for="">Code</label>
+        <div class="panel panel-default">
+            <ui-codemirror ng-model="vm.file.content" ui-codemirror-opts="{
+                            lineWrapping : true,
+                            lineNumbers: true,
+                        }"></ui-codemirror>
+        </div>
+    </div>
+</div>

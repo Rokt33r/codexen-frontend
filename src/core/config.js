@@ -14,10 +14,20 @@ angular.module('codexen.core.config')
     }]
 
     $httpProvider.interceptors.push('jwtInterceptor')
+    $httpProvider.interceptors.push(function() {
+      return {
 
-    uiSelectConfig.theme = 'bootstrap'
-    uiSelectConfig.resetSearchInput = true
-    uiSelectConfig.appendToBody = true
+        'response': function(response) {
+          if(response.status !== 200){
+            console.log('Error !:',response.status)
+            console.log('Error !:',response.body)
+
+          }
+          return response
+        }
+      }
+    })
+
   })
   .factory('apiUrl', function (env) {
     var rootUrl

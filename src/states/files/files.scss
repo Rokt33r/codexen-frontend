@@ -1,5 +1,18 @@
-.files-show-state{
+@import "../../mixins";
+.files-show-state, .files-edit-state{
     background-color:white;
+
+    .tags{
+        list-style: none;
+        padding: 0;
+        @include clearfix;
+
+        li{
+            float: left;
+            margin: 0 2px;
+        }
+    }
+
     .control-group{
         button{
             margin-bottom: 5px;

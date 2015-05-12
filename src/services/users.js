@@ -21,21 +21,16 @@ angular.module('codexen.services')
 
     }
 
-    var cards = function (user_name, page, search) {
-      var url = apiUrl + 'users/' + user_name + '/cards'
+    var folders = function (user_name){
+      var url = apiUrl + 'users/' + user_name + '/folders'
 
-      if (!page) page = 1
+      return $http.get(url)
+    }
 
-      var params = {
-        page: page
-      }
+    var files = function (user_name){
+      var url = apiUrl + 'users/' + user_name + '/files'
 
-      if (search !== undefined || search === '') params.search = search
-
-      return $http.get(url, {
-        params: params
-      })
-
+      return $http.get(url)
     }
 
     var follow = function (user_name) {
@@ -67,7 +62,8 @@ angular.module('codexen.services')
     return {
       index: index,
       show: show,
-      cards: cards,
+      folders: folders,
+      files: files,
       follow: follow,
       unfollow: unfollow,
       following: following,
