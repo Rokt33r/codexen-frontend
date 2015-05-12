@@ -12,9 +12,13 @@ file-item{
             top: 3px;
         }
     }
+    .file-detail{
+        z-index:101;
+    }
     .file-control{
         text-align: right;
         position: relative;
+        z-index:100;
         top: -20px;
         margin-top: -20px;
         @media (max-width: $screen-xs-max) {

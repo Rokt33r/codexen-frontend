@@ -9,7 +9,7 @@
 <section class="row">
 
     <div class="file-detail col-sm-7">
-        <ul class="tags"><li ng-repeat="tag in file.tags"><a ui-sref="tags.show({tag_name:tag.name})" ng-bind="tag.name" class="label label-default"></a></li></ul>
+        <ul class="tags"><li ng-repeat="tag in file.tags"><a ui-sref="explore.tags.show({tag_name:tag.name})" ng-bind="tag.name" class="label label-default"></a></li></ul>
 
         <p ng-bind="file.description"></p>
     </div>

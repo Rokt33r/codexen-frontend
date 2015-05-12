@@ -1,32 +1,33 @@
 /* global angular */
 angular.module('codexen.states.explore')
   .config(function ($stateProvider) {
-    $stateProvider.state('explore.files', {
-      url: '/files?{page:int}',
+
+
+    $stateProvider.state('explore.tags.show', {
+      url: '/:tag_name',
       views:{
-        'explore-root':{
-          templateUrl: 'states/explore/explore.files.tpl.html',
-          controller: 'ExploreFilesController as vm'
+        'explore-root@explore': {
+          templateUrl:'states/explore/explore.tags.show.tpl.html',
+          controller: 'ExploreTagsShowController as vm'
         }
-      },
-      params: {
-        page: 1
       }
     })
   })
-  .controller('ExploreFilesController', function ($state, File, $scope, $timeout, $window) {
+  .controller('ExploreTagsShowController', function (Tag, $timeout, $scope, $state) {
     var vm = this
+
+    var tagName = vm.tagName = $state.params.tag_name
 
     var page = $state.params.page
 
     vm.isLoaded = false
 
-    File.index(page).success(function (data) {
+    Tag.files(tagName, page).success(function (data) {
       vm.files = data.files
       vm.isLoaded = true
 
       // redirect last page if current page is more than last page
-      if (page > vm.files.last_page) $state.go('explore.files', {page: vm.files.last_page})
+      if (page > vm.files.last_page) $state.go('explore.tags.show', {tag_name:tagName, page: vm.files.last_page})
 
       vm.currentPage = page
 
@@ -44,10 +45,4 @@ angular.module('codexen.states.explore')
 
       $state.go('notfound')
     })
-
-  //
-  // $scope.$on('cardDeleted', function (event, card) {
-  //  event.preventDefault()
-  //  loadCards()
-  // })
   })

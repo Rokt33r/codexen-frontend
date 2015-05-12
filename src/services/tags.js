@@ -18,8 +18,8 @@ angular.module('codexen.services')
       return $http.get(url)
     }
 
-    var cards = function (tag_name, page) {
-      var url = apiUrl + 'tags/' + tag_name + '/cards'
+    var files = function (tag_name, page){
+      var url = apiUrl + 'tags/' + tag_name + '/files'
 
       if (!page) page = 1
 
@@ -35,7 +35,7 @@ angular.module('codexen.services')
     return {
       index: index,
       show: show,
-      cards: cards
+      files: files
     }
 
   })

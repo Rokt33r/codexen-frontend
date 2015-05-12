@@ -2,8 +2,9 @@
     <h1>Tags</h1>
     <ul class="tag-list">
         <li ng-repeat="tag in vm.tags.data">
-            <a ui-sref="tags.show({tag_name:tag.name})" ng-bind="tag.name" class="label label-default"></a>
+            <a ui-sref="explore.tags.show({tag_name:tag.name})" ng-bind="tag.name" class="label label-default"></a>
         </li>
     </ul>
 
 </div>
+<!--<div ng-if="vm.includes('explore.tags.show')" ui-view></div>-->

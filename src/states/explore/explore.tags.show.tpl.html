@@ -1,0 +1,31 @@
+<div class="explore-tags-show-state">
+    <h2><small>Tag</small> <span ng-bind="vm.tagName"></span></h2>
+
+    <!--<nav class="tags-nav">-->
+        <!--<ul class="nav">-->
+            <!--<li><a class="btn btn-wire-gray">Codes</a></li>-->
+            <!--<li><a class="btn btn-wire-gray">Folders</a></li>-->
+        <!--</ul>-->
+    <!--</nav>-->
+
+    <ul class="file-list">
+        <li ng-if="!vm.isLoaded">
+            <h3>Loading...</h3>
+        </li>
+        <li ng-if="vm.isLoaded&&!vm.files.data.length">
+            <h3>No Files</h3>
+        </li>
+        <li ng-repeat="file in vm.files.data">
+            <file-item file="file"></file-item>
+        </li>
+    </ul>
+
+    <pagination
+            total-items="vm.files.total"
+            items-per-page="vm.files.per_page"
+            ng-model="vm.currentPage"
+            ng-change="vm.changePage()"
+            max-size="5"
+            >
+    </pagination>
+</div>

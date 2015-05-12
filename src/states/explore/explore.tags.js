@@ -3,15 +3,22 @@ angular.module('codexen.states.explore')
   .config(function ($stateProvider) {
     $stateProvider.state('explore.tags', {
       url: '/tags?{page:int}',
-      templateUrl: 'states/explore/explore.tags.tpl.html',
-      controller: 'ExploreTagsController as vm',
+      views:{
+        'explore-root': {
+          templateUrl: 'states/explore/explore.tags.tpl.html',
+          controller: 'ExploreTagsController as vm'
+        }
+      },
       params: {
         page: 1
       }
     })
   })
-  .controller('ExploreTagsController', function (Tag, $timeout, $scope) {
+  .controller('ExploreTagsController', function (Tag, $timeout, $scope, $state) {
     var vm = this
+
+    vm.includes = $state.includes
+    console.log('is exp.tags : ',$state.includes('explore.tags'))
 
     //    var watchers
 

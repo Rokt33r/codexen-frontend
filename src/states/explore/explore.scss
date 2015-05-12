@@ -79,3 +79,22 @@
         }
     }
 }
+
+.explore-tags-show-state{
+
+    .file-list{
+        padding: 0 15px;
+        list-style: none;
+    }
+    .tags-nav{
+        @include clearfix;
+        ul li{
+            float: left;
+            width: 70px;
+            margin: 10px 10px 15px;
+            a{
+                padding: 5px 0;
+            }
+        }
+    }
+}
