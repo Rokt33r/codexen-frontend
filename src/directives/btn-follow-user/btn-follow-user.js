@@ -18,9 +18,9 @@ angular.module('codexen.directives')
           element.off('mouseenter')
           if (scope.user && scope.user.is_followed) {
             scope.label = 'Following'
-            element.addClass('btn-primary')
-              .removeClass('btn-danger')
-              .removeClass('btn-default')
+            element.addClass('btn-wire-blue active')
+              .removeClass('btn-wire-red')
+              .removeClass('btn-wire-gray')
 
             element.one('click', function () {
               User.unfollow(scope.user.name)
@@ -36,18 +36,18 @@ angular.module('codexen.directives')
             element.on('mouseenter', function () {
               scope.label = 'Unfollow'
 
-              element.removeClass('btn-primary')
-                .addClass('btn-danger')
-                .removeClass('btn-default')
+              element.removeClass('btn-wire-blue active')
+                .addClass('btn-wire-red')
+                .removeClass('btn-wire-gray')
 
               scope.$apply()
 
               element.one('mouseleave', function () {
                 scope.label = 'Following'
 
-                element.addClass('btn-primary')
-                  .removeClass('btn-danger')
-                  .removeClass('btn-default')
+                element.addClass('btn-wire-blue active')
+                  .removeClass('btn-wire-red')
+                  .removeClass('btn-wire-gray')
 
                 scope.$apply()
               })
@@ -56,11 +56,11 @@ angular.module('codexen.directives')
               scope.$apply()
             }, 0)
           } else {
-            scope.label = 'follow'
+            scope.label = 'Follow'
 
-            element.removeClass('btn-primary')
-              .removeClass('btn-danger')
-              .addClass('btn-default')
+            element.removeClass('btn-wire-blue active')
+              .removeClass('btn-wire-red')
+              .addClass('btn-wire-gray')
 
             element.one('click', function () {
               User.follow(scope.user.name)
