@@ -1,16 +1,20 @@
 /* global angular */
 angular.module('codexen.services')
   .factory('User', function ($http, apiUrl) {
-    var index = function (page) {
+    var index = function (page, relations) {
       var url = apiUrl + 'users'
       console.log('request to ', url)
 
       if (!page) page = 1
 
+      var params = {
+        page: page
+      }
+
+      if (!(relations == null)) params.relations = relations
+
       return $http.get(url, {
-        params: {
-          page: page
-        }
+        params: params
       })
     }
 

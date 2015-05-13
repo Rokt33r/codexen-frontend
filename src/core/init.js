@@ -13,9 +13,6 @@ angular.module('codexen.core.init')
         $state.go(state, params)
       }
 
-      // return if target state need no filtering
-      if (!angular.isObject(toState.data) || (!toState.data.auth && !toState.data.guest)) return
-
       var authState = Auth.getAuthState()
 
       // if on attempting, ignore state change

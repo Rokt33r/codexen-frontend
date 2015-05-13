@@ -1,7 +1,6 @@
 /* global angular */
 angular.module('codexen.directives')
   .directive('btnFollowUser', function (User, $timeout) {
-    var isLoaded = false
 
     return {
       restrict: 'A',
@@ -10,21 +9,24 @@ angular.module('codexen.directives')
         user: '=btnFollowUser'
       },
       link: function (scope, element) {
+        var isLoaded = false
         scope.$on('userFetched', function () {
           reload()
         })
 
         var reload = function () {
+          element.off('mouseenter')
           if (scope.user && scope.user.is_followed) {
             scope.label = 'Following'
             element.addClass('btn-primary')
               .removeClass('btn-danger')
               .removeClass('btn-default')
 
-            element.on('click', function () {
+            element.one('click', function () {
               User.unfollow(scope.user.name)
-                .success(function () {
+                .success(function (data) {
                   scope.user.is_followed = false
+                  scope.user.follower_count = data.user.follower_count
                   $timeout(function () {
                     reload()
                   })
@@ -60,10 +62,11 @@ angular.module('codexen.directives')
               .removeClass('btn-danger')
               .addClass('btn-default')
 
-            element.on('click', function () {
+            element.one('click', function () {
               User.follow(scope.user.name)
-                .success(function () {
+                .success(function (data) {
                   scope.user.is_followed = true
+                  scope.user.follower_count = data.user.follower_count
                   $timeout(function () {
                     reload()
                   })

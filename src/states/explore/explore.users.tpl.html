@@ -1,0 +1,47 @@
+<div class="explore-users-state">
+
+    <ul class="user-list">
+
+        <li ng-repeat="user in vm.users.data">
+
+            <div class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img width="60" height="60" ng-src="//www.gravatar.com/avatar/{{user.md5}}?s=60" alt="profile photo" class="img-circle media-object"/>
+                    </a>
+                </div>
+
+                <div class="media-body">
+                    <a ui-sref="users.show({user_name:user.name})">
+                        <h4 ng-bind="user.name"></h4>
+                    </a>
+                    <p>
+                        <i class="fa fa-group"></i> <span ng-bind="user.follower_count"></span>
+                        <i class="fa fa-code"></i> <span ng-bind="user.file_count"></span>
+                    </p>
+                </div>
+                <div class="media-right">
+                    <div ng-if="!vm.isMe(user)" class="form-group">
+                        <button btn-follow-user='user' class="btn btn-default"></button>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h5>Files</h5>
+                <ul class="file-list">
+                    <li ng-repeat="file in user.files">
+                        <file-item file="file"></file-item>
+                    </li>
+                </ul>
+            </div>
+
+
+        </li>
+
+    </ul>
+
+    <pagination
+            total-items="vm.users.total" items-per-page="vm.users.per_page" ng-model="vm.currentPage" ng-change="vm.changePage()">
+    </pagination>
+
+</div>

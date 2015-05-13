@@ -2,7 +2,7 @@
 
     <div class="file-name col-xs-8"><a ui-sref="files.show({file_id:file.id})" ng-bind="file.name"></a></div>
 
-    <div class="file-owner col-xs-4"><a ui-sref="users.show({user_name:file.owner.name})" ng-bind-html="' <img src=\'//www.gravatar.com/avatar/'+  file.owner.md5+'?s=20\' class=\'img-circle\'> ' + file.owner.name"></a></div>
+    <div ng-if="file.owner" class="file-owner col-xs-4"><a ui-sref="users.show({user_name:file.owner.name})" ng-bind-html="' <img src=\'//www.gravatar.com/avatar/'+  file.owner.md5+'?s=20\' class=\'img-circle\'> ' + file.owner.name"></a></div>
 
 </header>
 
