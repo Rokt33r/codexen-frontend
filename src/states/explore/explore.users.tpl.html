@@ -6,7 +6,7 @@
 
             <div class="media">
                 <div class="media-left">
-                    <a href="#">
+                    <a ui-sref="users.show({user_name:user.name})">
                         <img width="60" height="60" ng-src="//www.gravatar.com/avatar/{{user.md5}}?s=60" alt="profile photo" class="img-circle media-object"/>
                     </a>
                 </div>
@@ -20,7 +20,7 @@
                         <i class="fa fa-code"></i> <span ng-bind="user.file_count"></span>
                     </p>
                 </div>
-                <div class="media-right">
+                <div class="media-right media-middle">
                     <div ng-if="!vm.isMe(user)" class="form-group">
                         <button btn-follow-user='user' class="btn btn-sm"></button>
                     </div>

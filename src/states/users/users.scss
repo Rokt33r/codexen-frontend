@@ -1,3 +1,5 @@
+@import "../../mixins";
+
 .users-state{
     .user-list{
         list-style: none;
@@ -12,8 +14,24 @@
 
 .users-show-state{
     .user-info{
-        margin-top:50px;
-        text-align: center;
+
+    }
+    .user-numbers{
+        border-top: solid lightgray 1px;
+        border-bottom: solid lightgray 1px;
+        list-style: none;
+        padding: 0;
+        width: 320px;
+        margin: 15px auto;
+        @include clearfix;
+        li{
+            float: left;
+            width: 80px;
+            padding: 10px 5px;
+            p{
+                margin: 0;
+            }
+        }
     }
 
     .card-list{

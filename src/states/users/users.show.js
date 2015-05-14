@@ -43,27 +43,6 @@ angular.module('codexen.states.users')
     })
 
     var loadCards = function () {
-      var currentOffset = $window.pageYOffset
-      User.cards(userName, page).success(function (data) {
-        vm.cards = data.cards
-        vm.isLoaded = true
-
-        // redirect last page if current page is more than last page
-        if (page > vm.cards.last_page) $state.go('users.show', {user_name: userName, page: vm.cards.last_page})
-
-        vm.currentPage = page
-
-        vm.changePage = function () {
-          console.log('Changed : ', vm.currentPage)
-
-          $state.go('users.show', {user_name: userName, page: vm.currentPage})
-
-        }
-
-        $timeout(function () {
-          $window.scrollTo(0, currentOffset)
-        }, 0)
-      })
     }
 
     $scope.$on('cardDeleted', function (event, card) {

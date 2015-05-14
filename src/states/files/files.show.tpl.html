@@ -5,8 +5,10 @@
                 <h4>
                     <small>Author</small>
                     <br/>
-                    <img width="50" height="50" ng-src="//www.gravatar.com/avatar/{{vm.file.owner.md5}}?s=50" alt="owner_photo" class="img-circle"/>
-                    <span ng-bind="vm.file.owner.name"></span>
+                    <a ui-sref="users.show({user_name:vm.file.owner.name})">
+                        <img width="50" height="50" ng-src="//www.gravatar.com/avatar/{{vm.file.owner.md5}}?s=50" alt="owner_photo" class="img-circle"/>
+                        <span ng-bind="vm.file.owner.name"></span>
+                    </a>
                 </h4>
 
             </div>

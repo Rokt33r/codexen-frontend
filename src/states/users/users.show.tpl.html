@@ -1,33 +1,41 @@
 <div class="users-show-state container-fluid">
-    <div class="row">
-        <div class="col-sm-4 col-md-3">
-            <div class="user-info">
-                <img ng-src="//www.gravatar.com/avatar/{{vm.user.md5}}?s=100" alt="profile photo" class="img-circle"/>
-                <h2 ng-bind="vm.user.name"></h2>
-
-                <div ng-if="!vm.isMe" class="form-group">
-                    <button btn-follow-user='vm.user' class="btn btn-default"></button>
-                </div>
-            </div>
+    <div class="center-block text-center">
+        <div class="user-info">
+            <img ng-src="//www.gravatar.com/avatar/{{vm.user.md5}}?s=100" alt="profile photo" class="img-circle"/>
+            <h2 ng-bind="vm.user.name"></h2>
         </div>
-        <div class="col-sm-8 col-md-9">
 
-            <ul class="card-list">
-                <li ng-if="!vm.isLoaded">
-                    <h3>Loading...</h3>
+        <div>
+            <ul class="user-numbers">
+                <li>
+                    <p>
+                        <span ng-bind="vm.user.file_count"></span><br>
+                        Codes
+                    </p>
                 </li>
-                <li ng-if="vm.isLoaded&&!vm.cards.data.length">
-                    <h3>No Cards</h3>
+                <li>
+                    <p>
+                        <span ng-bind="vm.user.starred_count"></span><br>
+                        Starred
+                    </p>
                 </li>
-                <li ng-repeat="card in vm.cards.data">
-                    <card-viewer card="card"></card-viewer>
+                <li>
+                    <p>
+                        <span ng-bind="vm.user.following_count"></span><br>
+                        Following
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <span ng-bind="vm.user.follower_count"></span><br>
+                        Followers
+                    </p>
                 </li>
             </ul>
+        </div>
 
-            <pagination
-                    total-items="vm.cards.total" items-per-page="vm.cards.per_page" ng-model="vm.currentPage" ng-change="vm.changePage()">
-            </pagination>
-
+        <div ng-if="!vm.isMe" class="form-group">
+            <button btn-follow-user='vm.user' class="btn btn-default"></button>
         </div>
     </div>
 </div>
