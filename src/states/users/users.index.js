@@ -3,9 +3,12 @@ angular.module('codexen.states.users')
   .config(function ($stateProvider) {
     $stateProvider.state('users.index', {
       url: '/list?{page:int}',
-      templateUrl: 'states/users/users.index.tpl.html',
-      controller: 'UsersIndexController',
-      controllerAs: 'vm',
+      views:{
+        'users-root':{
+          templateUrl: 'states/users/users.index.tpl.html',
+          controller: 'UsersIndexController as vm'
+        }
+      },
       params: {
         page: 1
       }

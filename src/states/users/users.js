@@ -7,7 +7,7 @@ angular.module('codexen.states.users')
 
     $stateProvider.state('users', {
       url: '/users',
-      template: '<div ui-view></div>'
+      template: '<div ui-view name="users-root"></div>'
     })
 
   })

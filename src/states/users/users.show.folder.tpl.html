@@ -1,0 +1,69 @@
+<div class="users-show-folder-state">
+    <div class="container">
+        <h1 ng-bind="vm.folder.name"></h1>
+
+        <tag-list tags="vm.folder.tags"></tag-list>
+
+        <p ng-bind="vm.folder.description"></p>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Commands</div>
+
+            <div class="panel-body">
+                <ul class="command-list">
+                    <li ng-if="!vm.loaded"> Loading</li>
+                    <li ng-if="vm.loaded && vm.folder.commands.length == 0"></li>
+
+                    <li ng-if="vm.loaded" ng-repeat="command in vm.folder.commands">
+
+                        <span class="dropdown" dropdown on-toggle="toggled(open)">
+                            <button class="btn btn-sm btn-wire-gray dropdown-toggle" dropdown-toggle>
+                                <span ng-if="command.type == 'generator'"><i class="fa fa-code"></i></span>
+                                <span ng-if="command.type == 'runner'"><i class="fa fa-spinner"></i></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li role="presentation" class="dropdown-header">file type</li>
+                                <li ng-class="{active:command.type == 'generator'}">
+                                    <a ng-click="command.type = 'generator'"><i class="fa fa-code"></i> Generator</a></li>
+                                <li ng-class="{active:command.type == 'runner'}">
+                                    <a ng-click="command.type = 'runner'"><i class="fa fa-spinner"></i> Runner</a>
+                                </li>
+                            </ul>
+                        </span>
+
+                        <input ng-model="command.command" type="text"/>
+                        <button ng-click="vm.bindFile(command)" class="btn btn-sm btn-wire-gray">
+                            {{command.file_id}}
+                            <span ng-if="command.file_id == null">No file selected</span>
+                        </button>
+                        <button class="btn btn-sm btn-wire-gray">Config</button>
+                    </li>
+                    <li ng-if="vm.loaded">
+                        <button ng-click="vm.addCommand()" class="btn btn-sm btn-wire-gray">Add Command</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="panel-footer">
+                <pre ng-bind="vm.folder.commands|json"></pre>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Files <input ng-model="search.name" type="text" class="form-control input-sm" style="display:inline; width:inherit;"/></div>
+
+            <div class="panel-body">
+                <ul class="file-list">
+                    <li ng-repeat="file in vm.folder.files.data | filter:search">
+                        <div class="media">
+                            <span ng-bind="file.name"></span>
+                            <button btn-star-file="file" class="btn btn-sm btn-wire-gray"></button>
+                            <button btn-fork-file="file" class="btn btn-sm btn-wire-gray"></button>
+                            <button btn-edit-file="file" class="btn btn-sm btn-wire-gray"></button>
+                            <button btn-delete-file="file" class="btn btn-sm btn-wire-red"></button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

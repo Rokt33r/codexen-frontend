@@ -1,0 +1,13 @@
+<div class="modal-header">
+    <h3 class="modal-title">I'm a modal!</h3>
+</div>
+<div class="modal-body">
+    <ul>
+        <li ng-repeat="file in vm.files.data">
+            <button ng-click="vm.selectFile(file)" class="btn btn-sm btn-wire-gray"><span ng-bind="file.name"></span></button>
+        </li>
+    </ul>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" ng-click="vm.cancel()">Cancel</button>
+</div>

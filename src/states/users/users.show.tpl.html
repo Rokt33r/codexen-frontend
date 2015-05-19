@@ -5,8 +5,8 @@
             <h2 ng-bind="vm.user.name"></h2>
         </div>
 
-        <div>
-            <ul class="user-numbers">
+        <div class="user-numbers">
+            <ul>
                 <li>
                     <p>
                         <span ng-bind="vm.user.file_count"></span><br>
@@ -37,5 +37,13 @@
         <div ng-if="!vm.isMe" class="form-group">
             <button btn-follow-user='vm.user' class="btn btn-default"></button>
         </div>
+    </div>
+
+    <div class="container">
+        <ul class="folder-list">
+            <li ng-repeat="folder in vm.folders.data">
+                <folder-item folder="folder"></folder-item>
+            </li>
+        </ul>
     </div>
 </div>

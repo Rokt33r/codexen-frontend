@@ -1,0 +1,14 @@
+@import "../../mixins";
+
+tag-list{
+    ul{
+        @include clearfix;
+        margin: 2px 0;
+        list-style: none;
+        padding: 0;
+        li{
+            float: left;
+            padding: 0 2px;
+        }
+    }
+}

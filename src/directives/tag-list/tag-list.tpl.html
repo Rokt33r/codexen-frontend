@@ -1,0 +1,5 @@
+<ul>
+    <li ng-repeat="tag in tags">
+        <a ui-sref="explore.tags.show({tag_name:tag.name})" ng-bind="tag.name" class="label label-default"></a>
+    </li>
+</ul>
